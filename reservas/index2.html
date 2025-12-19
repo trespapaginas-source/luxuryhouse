@@ -37,14 +37,12 @@
             100% { transform: scale(1.15) translate(3%, 0); }
         }
 
-        /* Clase para ocultar el overlay suavemente */
         .fade-out {
             opacity: 0;
             pointer-events: none;
             transition: opacity 0.5s ease-out;
         }
 
-        /* ANIMACIÓN PARA EL ZOOM */
         .animate-zoom-pulse {
             animation: zoomPulse 2s infinite ease-in-out;
         }
@@ -52,6 +50,16 @@
         @keyframes zoomPulse {
             0%, 100% { transform: scale(1); opacity: 0.8; }
             50% { transform: scale(1.3); opacity: 1; }
+        }
+        
+        /* Animación suave para la Trust Bar */
+        .animate-pulse-slow {
+            animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        @keyframes pulseSlow {
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: .85; transform: scale(1.05); }
         }
 
         /* ESTILOS DEL SISTEMA DE RESERVAS */
@@ -144,69 +152,70 @@
         </div>
     </header>
 
-    <!-- 🌟 TRUST BAR (NUEVA: CEO STRATEGY) -->
-    <section id="trust_bar" class="bg-stone-100 py-6 border-b border-stone-200">
-        <div class="container mx-auto px-6">
-            <div class="flex flex-col md:flex-row justify-around items-center text-center gap-6 md:gap-4">
-                <div class="flex items-center gap-3">
-                    <div class="bg-amber-100 p-2 rounded-full text-amber-600"><i data-lucide="star" width="20"></i></div>
-                    <div class="text-left">
-                        <span class="font-bold text-stone-800 block text-lg leading-none">5.0/5.0</span>
-                        <span class="text-xs uppercase tracking-wider text-stone-500">Calificación Airbnb</span>
-                    </div>
+    <!-- 🌟 TRUST BAR (PREMIUM LIGHT EDITION - CON EFECTO HIELO) -->
+    <section id="trust_bar" class="relative z-20 -mt-8 mx-4 md:mx-auto max-w-5xl">
+        <div class="bg-white/80 backdrop-blur-md shadow-2xl rounded-xl border border-white/40 py-8 px-4">
+            <div class="grid grid-cols-3 divide-x divide-stone-200">
+                <!-- Item 1 -->
+                <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow">
+                    <i data-lucide="star" class="text-amber-500 mb-2 w-8 h-8 fill-amber-500 drop-shadow-sm"></i>
+                    <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">5.0</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-stone-500 font-bold">Airbnb Star</span>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="bg-amber-100 p-2 rounded-full text-amber-600"><i data-lucide="shield-check" width="20"></i></div>
-                    <div class="text-left">
-                        <span class="font-bold text-stone-800 block text-lg leading-none">100% Seguro</span>
-                        <span class="text-xs uppercase tracking-wider text-stone-500">Sin intermediarios</span>
-                    </div>
+                <!-- Item 2 -->
+                <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow" style="animation-delay: 1s;">
+                    <i data-lucide="shield-check" class="text-amber-500 mb-2 w-8 h-8 drop-shadow-sm"></i>
+                    <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">100%</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-stone-500 font-bold">Verificado</span>
                 </div>
-                <div class="flex items-center gap-3">
-                    <div class="bg-amber-100 p-2 rounded-full text-amber-600"><i data-lucide="heart" width="20"></i></div>
-                    <div class="text-left">
-                        <span class="font-bold text-stone-800 block text-lg leading-none">+500</span>
-                        <span class="text-xs uppercase tracking-wider text-stone-500">Huéspedes Felices</span>
-                    </div>
+                <!-- Item 3 -->
+                <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow" style="animation-delay: 2s;">
+                    <i data-lucide="users" class="text-amber-500 mb-2 w-8 h-8 drop-shadow-sm"></i>
+                    <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">+500</span>
+                    <span class="text-[10px] md:text-xs uppercase tracking-widest text-stone-500 font-bold">Huéspedes</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Virtual Tour Section (MOVIDO ARRIBA: EL GANCHO VISUAL) -->
-    <section id="tour-virtual" class="py-0 relative bg-stone-900 text-white">
-        <div class="absolute top-0 left-0 w-full h-full bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-10"></div>
+    <!-- Virtual Tour Section (LUMINOSO & INTEGRADO) -->
+    <section id="tour-virtual" class="pt-24 pb-20 relative bg-white">
+        <!-- Fondo sutil decorativo -->
+        <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-stone-100 via-white to-white opacity-60"></div>
         
-        <div class="container mx-auto px-6 py-20 relative z-10">
+        <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="lg:w-1/3">
-                    <span class="text-amber-400 font-bold tracking-widest uppercase text-sm mb-2 block">Inmersión Total</span>
-                    <h2 class="font-serif text-4xl md:text-5xl mb-6">Recorre la Cabaña <br/>Ahora Mismo</h2>
-                    <p class="text-stone-300 mb-8 leading-relaxed">
-                        No confíes solo en palabras. Explora cada rincón, mide los espacios y siente la atmósfera de Luxury House antes de reservar. Sin sorpresas.
+                    <span class="text-amber-600 font-bold tracking-widest uppercase text-sm mb-2 block">Tecnología Inmersiva</span>
+                    <h2 class="font-serif text-4xl md:text-5xl mb-6 text-stone-900">Recorre la Cabaña <br/>Ahora Mismo</h2>
+                    <p class="text-stone-600 mb-8 leading-relaxed text-lg">
+                        La transparencia es nuestro sello. Explora cada rincón, siente la amplitud de los espacios y la calidad de los acabados antes de reservar.
                     </p>
                     <div class="flex items-center space-x-4 mb-8">
-                        <div class="w-12 h-12 rounded-full bg-amber-500 flex items-center justify-center animate-pulse">
-                            <i data-lucide="mouse-pointer-2" class="text-white" width="24"></i>
+                        <div class="w-12 h-12 rounded-full bg-amber-100 flex items-center justify-center">
+                            <i data-lucide="scan-face" class="text-amber-600" width="24"></i>
                         </div>
-                        <span class="font-serif italic text-lg">Interactúa con el visor</span>
+                        <span class="font-serif italic text-lg text-stone-800">Experiencia interactiva 360°</span>
                     </div>
-                    <p class="text-xs text-stone-500 uppercase tracking-widest border-t border-stone-700 pt-6">
-                        Powered by Panoee
-                    </p>
                 </div>
 
-                <div class="lg:w-2/3 w-full h-[600px] md:h-[720px] bg-stone-800 rounded-lg shadow-2xl overflow-hidden border-4 border-stone-700 relative group">
-                    <div id="tour-overlay" class="absolute inset-0 z-20 flex flex-col gap-4 items-center justify-center bg-black/40 cursor-pointer transition-all duration-300">
-                        <button class="bg-black/60 text-white px-6 py-3 rounded-full text-sm font-bold backdrop-blur-md flex items-center gap-2 hover:bg-amber-600 transition-colors shadow-lg border border-white/20">
-                            <i data-lucide="hand" width="18"></i>
-                            Haz clic y arrastra para explorar
-                        </button>
-                        <div class="flex items-center gap-2 text-white/90 bg-black/30 px-4 py-2 rounded-full backdrop-blur-sm border border-white/5">
-                            <i data-lucide="zoom-in" width="20" class="animate-zoom-pulse text-amber-400"></i>
-                            <span class="text-xs font-semibold uppercase tracking-widest shadow-sm">Scroll / Pellizca para Zoom</span>
+                <div class="lg:w-2/3 w-full h-[600px] md:h-[720px] bg-stone-100 rounded-2xl shadow-2xl overflow-hidden border border-stone-200 relative group">
+                    
+                    <!-- OVERLAY "GLASS" CON LOGO 360 GIGANTE -->
+                    <div id="tour-overlay" class="absolute inset-0 z-20 flex flex-col gap-4 items-center justify-center bg-white/20 backdrop-blur-sm cursor-pointer transition-all duration-500 group-hover:bg-white/10">
+                        
+                        <!-- Logo 360 Construido con Tailwind -->
+                        <div class="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/90 backdrop-blur-md shadow-2xl border border-white/50 animate-zoom-pulse">
+                            <div class="text-center">
+                                <span class="block font-bold text-4xl md:text-5xl text-stone-900 tracking-tighter">360°</span>
+                                <span class="block text-[10px] uppercase tracking-widest text-amber-600 font-bold mt-1">Click to Tour</span>
+                            </div>
+                            <!-- Anillo decorativo -->
+                            <div class="absolute inset-0 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" style="animation-duration: 3s;"></div>
                         </div>
+
                     </div>
+                    
                     <iframe 
                         src="https://tour.panoee.net/69156202697cc60f7567c607" 
                         width="100%" 
@@ -222,7 +231,7 @@
     </section>
 
     <!-- Intro / Story Section -->
-    <section id="experiencia" class="py-20 md:py-32 px-6 bg-white">
+    <section id="experiencia" class="py-20 md:py-32 px-6 bg-white border-t border-stone-100">
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row items-center gap-16">
                 <div class="lg:w-1/2 relative">
@@ -262,7 +271,7 @@
     </section>
 
     <!-- Amenities Section -->
-    <section id="comodidades" class="py-20 bg-stone-100">
+    <section id="comodidades" class="py-20 bg-stone-50">
         <div class="container mx-auto px-6">
             <div class="text-center max-w-3xl mx-auto mb-16">
                 <h2 class="font-serif text-4xl text-stone-800 mb-4">Comodidades de Primera Clase</h2>
@@ -321,7 +330,7 @@
         </div>
     </section>
 
-    <!-- Testimonial Section (CON FOTOS SOLICITADAS) -->
+    <!-- Testimonial Section -->
     <section class="py-24 bg-white relative overflow-hidden">
         <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-50"></div>
         <div class="container mx-auto px-6 relative z-10">
@@ -348,7 +357,6 @@
                         "El recorrido 360° me ayudó un montón a decidirme. Pude ver todo como si estuviera ahí, cada rincón, y eso me dio la seguridad que necesitaba. ¡Lo recomiendo!"
                     </p>
                     <div class="flex items-center space-x-3">
-                        <!-- IMAGEN CIRCULAR AGREGADA -->
                         <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
                             <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=150&auto=format&fit=crop" alt="Valeria Gomez" class="w-full h-full object-cover">
                         </div>
@@ -372,7 +380,6 @@
                         "Celebramos el aniversario de mis padres y fue mágico. La zona de BBQ es perfecta y la privacidad es inigualable. Definitivamente volveremos el próximo año."
                     </p>
                     <div class="flex items-center space-x-3">
-                         <!-- IMAGEN CIRCULAR AGREGADA -->
                          <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
                             <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=150&auto=format&fit=crop" alt="Carlos Méndez" class="w-full h-full object-cover">
                         </div>
@@ -396,7 +403,6 @@
                         "La atención a los detalles es increíble. Las habitaciones son súper cómodas y la fogata de la piscina me enamoró. Un 10 de 10 en servicio y calidad."
                     </p>
                     <div class="flex items-center space-x-3">
-                         <!-- IMAGEN CIRCULAR AGREGADA -->
                          <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
                             <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=150&auto=format&fit=crop" alt="Andrea Torres" class="w-full h-full object-cover">
                         </div>
@@ -411,7 +417,7 @@
         </div>
     </section>
 
-    <!-- ❓ FAQ SECTION (NUEVA: MATAR OBJECIONES ANTES DE VENDER) -->
+    <!-- FAQ SECTION -->
     <section id="faq" class="py-16 bg-stone-50 border-t border-stone-200">
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="font-serif text-3xl font-bold text-stone-800 text-center mb-8">Resuelve tus dudas antes de reservar</h2>
@@ -470,11 +476,10 @@
         </div>
     </section>
 
-    <!-- BOOKING SYSTEM SECTION (Diseño Actualizado & Optimizado por CEO) -->
+    <!-- BOOKING SYSTEM SECTION (Diseño Actualizado) -->
     <section id="reservas" class="py-20 bg-stone-100 text-stone-800 relative">
         <div class="container mx-auto px-6 relative z-10 max-w-6xl">
             
-            <!-- HEADER RESERVAS -->
             <div class="mb-12 text-center">
                 <h2 class="font-serif text-3xl md:text-5xl font-bold mb-4 text-stone-800">Asegura tu fecha hoy</h2>
                 <p class="text-amber-600 font-bold uppercase tracking-wide animate-pulse">
@@ -484,58 +489,62 @@
 
             <div class="flex flex-col lg:flex-row gap-8 items-start">
                 
-                <!-- 🌟 COLUMNA IZQUIERDA: BENEFICIOS "WHY RESERVE HERE" (NUEVO) -->
+                <!-- 🌟 COLUMNA IZQUIERDA: DISEÑO "APPLE" (MINIMALISTA) -->
                 <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg border border-stone-200 shadow-md">
-                    <h3 class="font-serif text-xl font-bold mb-4 text-stone-800 border-b pb-2">¿Por qué reservar aquí?</h3>
-                    <ul class="space-y-4 mb-8">
-                        <li class="flex items-start gap-3">
-                            <div class="bg-green-100 p-1 rounded text-green-700"><i data-lucide="check" width="16"></i></div>
+                    <h3 class="font-serif text-xl font-bold mb-6 text-stone-800">¿Por qué reservar aquí?</h3>
+                    <ul class="space-y-6 mb-8">
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="gem" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
                             <div>
-                                <strong class="block text-sm text-stone-900">Sin intermediarios</strong>
-                                <span class="text-xs text-stone-500">Trato directo con el propietario.</span>
+                                <strong class="block text-sm text-stone-900 font-bold">Sin intermediarios</strong>
+                                <span class="text-xs text-stone-500 font-light">Trato directo y transparente.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-green-100 p-1 rounded text-green-700"><i data-lucide="check" width="16"></i></div>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="badge-check" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
                             <div>
-                                <strong class="block text-sm text-stone-900">Mejor precio garantizado</strong>
-                                <span class="text-xs text-stone-500">Sin comisiones ocultas de plataformas.</span>
+                                <strong class="block text-sm text-stone-900 font-bold">Mejor precio garantizado</strong>
+                                <span class="text-xs text-stone-500 font-light">Sin comisiones de apps.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-green-100 p-1 rounded text-green-700"><i data-lucide="check" width="16"></i></div>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="zap" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
                             <div>
-                                <strong class="block text-sm text-stone-900">Confirmación Rápida</strong>
-                                <span class="text-xs text-stone-500">Gestión ágil vía WhatsApp.</span>
+                                <strong class="block text-sm text-stone-900 font-bold">Confirmación Inmediata</strong>
+                                <span class="text-xs text-stone-500 font-light">Gestión ágil por WhatsApp.</span>
                             </div>
                         </li>
-                        <li class="flex items-start gap-3">
-                            <div class="bg-green-100 p-1 rounded text-green-700"><i data-lucide="check" width="16"></i></div>
+                        <li class="flex items-start gap-4">
+                            <i data-lucide="headphones" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
                             <div>
-                                <strong class="block text-sm text-stone-900">Soporte 24/7</strong>
-                                <span class="text-xs text-stone-500">Asistencia para tu llegada.</span>
+                                <strong class="block text-sm text-stone-900 font-bold">Asistencia VIP</strong>
+                                <span class="text-xs text-stone-500 font-light">Soporte 24/7 para tu llegada.</span>
                             </div>
                         </li>
                     </ul>
                     
-                    <div class="bg-stone-50 p-4 rounded text-center border border-stone-200">
-                        <p class="font-bold text-sm mb-2">¿Tienes dudas puntuales?</p>
-                        <a href="https://wa.me/573246874533" target="_blank" class="flex items-center justify-center gap-2 text-stone-700 hover:text-green-600 transition-colors font-bold text-sm">
-                            <i data-lucide="message-circle" width="16"></i>
-                            Chatear con un asesor
+                    <!-- BOTÓN CHAT OPTIMIZADO PARA MÓVIL (Full Width & Touch Friendly) -->
+                    <div class="pt-4 border-t border-stone-100">
+                        <a href="https://wa.me/573246874533" target="_blank" class="block w-full py-4 bg-stone-50 border border-stone-200 rounded-lg text-center active:bg-stone-100 transition-colors group">
+                            <p class="text-xs text-stone-500 mb-1">¿Tienes dudas puntuales?</p>
+                            <span class="flex items-center justify-center gap-2 text-stone-800 font-bold text-sm group-hover:text-amber-600 transition-colors">
+                                <i data-lucide="message-circle" width="18"></i>
+                                Hablar con un Asesor
+                            </span>
                         </a>
                     </div>
                 </div>
 
-                <!-- 🌟 COLUMNA DERECHA: SISTEMA DE RESERVAS (INTACTO PERO REUBICADO) -->
+                <!-- 🌟 COLUMNA DERECHA: SISTEMA DE RESERVAS -->
                 <div class="w-full lg:w-2/3">
-                    <!-- 1. BARRA DE SELECCIÓN (GRID) -->
+                    <!-- 1. BARRA DE SELECCIÓN -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-white p-6 rounded-lg border border-stone-200 shadow-lg">
                         
                         <!-- A. FECHA LLEGADA -->
                         <div class="relative group">
                             <label class="block text-xs uppercase tracking-widest text-amber-600 mb-2 font-medium">Llegada</label>
                             <div class="relative h-12">
+                                <!-- ID for JS targeting -->
                                 <input type="date" id="checkin-input" class="hero-date-input absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10">
                                 <div id="checkin-display-container" class="absolute inset-0 text-xl py-2 border-b border-stone-300 text-stone-500 transition-colors duration-300 flex justify-between items-center pointer-events-none group-hover:border-amber-500">
                                     <span id="checkin-display" class="font-light truncate">Seleccionar</span>
@@ -563,7 +572,6 @@
                                 <span id="pax-display" class="font-light">Cantidad</span>
                                 <i data-lucide="chevron-down" id="pax-icon" class="w-5 h-5 text-stone-400 transition-transform duration-300"></i>
                             </div>
-                            <!-- Dropdown -->
                             <div id="pax-dropdown" class="hidden absolute top-full left-0 w-full bg-white text-stone-800 border border-stone-200 shadow-xl z-20 mt-2 max-h-60 overflow-y-auto transition-all duration-300 scrollbar-hide rounded-sm">
                                 <!-- Options generated by JS -->
                             </div>
@@ -578,21 +586,21 @@
                         </button>
                     </div>
 
-                    <!-- 2. FORMULARIO DE DATOS (Oculto inicial) -->
+                    <!-- 2. FORMULARIO DE DATOS -->
                     <div id="form-section" class="hidden border-t border-stone-300 pt-8 relative z-10 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex flex-col gap-8 animate-fade-in-up">
                             
-                            <!-- Resumen Integrado -->
-                            <div class="bg-blue-50 p-4 rounded border border-blue-100 flex flex-wrap gap-4 justify-between items-center text-sm">
+                            <!-- Resumen Integrado (CORREGIDO DE AZUL A ÁMBAR/GLASS) -->
+                            <div class="bg-amber-50/50 p-4 rounded-lg border border-amber-100/50 backdrop-blur-sm flex flex-wrap gap-4 justify-between items-center text-sm">
                                 <div>
-                                    <span class="block text-xs text-blue-500 uppercase">Estadía</span>
-                                    <strong id="summary-nights" class="text-blue-900">-</strong>
+                                    <span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Estadía</span>
+                                    <strong id="summary-nights" class="text-stone-800 text-lg">-</strong>
                                 </div>
                                 <div>
-                                    <span class="block text-xs text-blue-500 uppercase">Fechas</span>
-                                    <span class="text-blue-900"><span id="summary-checkin">-</span> al <span id="summary-checkout">-</span></span>
+                                    <span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Fechas</span>
+                                    <span class="text-stone-600"><span id="summary-checkin">-</span> al <span id="summary-checkout">-</span></span>
                                 </div>
-                                <button onclick="editSelection()" class="text-xs text-blue-600 underline font-bold">Editar</button>
+                                <button onclick="editSelection()" class="text-xs text-amber-700 underline font-bold hover:text-amber-500 transition-colors">Editar</button>
                             </div>
 
                             <!-- Campos Formulario -->
@@ -600,7 +608,6 @@
                                 <h3 class="text-sm uppercase tracking-widest text-amber-600 mb-6 font-bold">Tus Datos para Confirmar</h3>
                                 
                                 <form id="booking-form" onsubmit="submitBooking(event)" class="space-y-6">
-                                    <!-- Nombre y Apellido -->
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div class="group relative">
                                             <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Nombre</label>
@@ -612,27 +619,21 @@
                                         </div>
                                     </div>
 
-                                    <!-- Email -->
                                     <div class="group relative">
                                         <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Email</label>
                                         <input type="email" id="email" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. juan@email.com">
                                     </div>
 
-                                    <!-- Celular -->
                                     <div class="group relative">
                                         <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Número Celular (WhatsApp)</label>
                                         <input type="tel" id="phone" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. 300 123 4567">
                                     </div>
 
-                                    <!-- Notas -->
                                     <div class="group">
-                                        <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">
-                                            Comentarios
-                                        </label>
+                                        <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Comentarios</label>
                                         <textarea id="notes-input" class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400 resize-none h-20" placeholder="¿Celebras algo especial?"></textarea>
                                     </div>
 
-                                    <!-- Legales -->
                                     <div class="pt-4 border-t border-stone-200 mt-4 space-y-4">
                                         <label class="flex items-start gap-4 cursor-pointer group select-none">
                                             <div id="terms-check-box" class="w-5 h-5 border border-stone-400 flex items-center justify-center transition-colors duration-300 mt-1 bg-transparent min-w-[1.25rem]">
@@ -645,9 +646,9 @@
                                         </label>
                                     </div>
 
-                                    <!-- Botón Submit -->
+                                    <!-- BOTÓN WHATSAPP FINAL -->
                                     <div class="pt-4 flex justify-center">
-                                        <button id="submit-btn" type="submit" disabled class="w-full py-4 bg-stone-900 text-white text-base font-bold tracking-widest uppercase rounded-sm transition-all duration-300 opacity-50 cursor-not-allowed hover:bg-green-600 hover:shadow-xl flex items-center justify-center gap-3">
+                                        <button id="submit-btn" type="submit" disabled class="w-full py-5 bg-amber-600 text-white text-base font-bold tracking-widest uppercase rounded-sm transition-all duration-300 opacity-50 cursor-not-allowed hover:bg-amber-500 hover:shadow-xl hover:scale-[1.01] flex items-center justify-center gap-3 shadow-lg">
                                             <i data-lucide="message-circle" class="w-6 h-6"></i>
                                             Confirmar en WhatsApp
                                         </button>
@@ -687,17 +688,13 @@
     <script>
         // Inicializar iconos Lucide
         lucide.createIcons();
-
-        // Actualizar año footer
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // --- LÓGICA DE INTERACCIÓN DEL TOUR VIRTUAL ---
         const tourOverlay = document.getElementById('tour-overlay');
         tourOverlay.addEventListener('click', function() {
             this.classList.add('fade-out');
         });
 
-        // --- LÓGICA DEL NAVBAR SCROLL ---
         const navbar = document.getElementById('navbar');
         const navLogo = document.getElementById('nav-logo');
         const navLinksContainer = document.getElementById('nav-links');
@@ -708,21 +705,18 @@
             if (window.scrollY > 50) {
                 navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
                 navbar.classList.remove('bg-transparent', 'py-6');
-                
                 navLogo.classList.replace('text-white', 'text-stone-800');
                 navLinksContainer.classList.replace('text-white/90', 'text-stone-600');
                 menuBtn.classList.replace('text-white', 'text-stone-800');
             } else {
                 navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
                 navbar.classList.add('bg-transparent', 'py-6');
-                
                 navLogo.classList.replace('text-stone-800', 'text-white');
                 navLinksContainer.classList.replace('text-stone-600', 'text-white/90');
                 menuBtn.classList.replace('text-stone-800', 'text-white');
             }
         });
 
-        // Lógica del Menú Móvil
         menuBtn.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
             mobileMenu.classList.toggle('flex');
@@ -739,14 +733,7 @@
         // LÓGICA DEL SISTEMA DE RESERVAS
         // ==========================================
         
-        let state = {
-            checkin: '',
-            checkout: '',
-            pax: '',
-            terms: false
-        };
-
-        // Generar Pax Options (1-20)
+        let state = { checkin: '', checkout: '', pax: '', terms: false };
         const paxDropdown = document.getElementById('pax-dropdown');
         for (let i = 1; i <= 20; i++) {
             const div = document.createElement('div');
@@ -756,15 +743,15 @@
             paxDropdown.appendChild(div);
         }
 
-        // Configuración inicial de fechas (Restricción de fechas pasadas)
         const checkinInput = document.getElementById('checkin-input');
         const checkoutInput = document.getElementById('checkout-input');
         
-        // Establecer fecha mínima como hoy
+        // --- FIX CRÍTICO FECHAS MÓVIL ---
+        // Se ejecuta al inicio para bloquear días pasados inmediatamente
         const today = new Date().toISOString().split('T')[0];
-        checkinInput.min = today;
+        checkinInput.min = today; 
+        checkinInput.setAttribute('min', today); // Refuerzo para algunos navegadores móviles
 
-        // LOGICA CHECK-IN
         checkinInput.addEventListener('change', (e) => {
             state.checkin = e.target.value;
             const options = { month: 'long', day: 'numeric' };
@@ -778,17 +765,17 @@
             document.getElementById('checkin-display-container').classList.add('border-amber-500');
             document.getElementById('checkin-icon').classList.replace('text-stone-400', 'text-amber-500');
             
-            // Habilitar y Configurar Check-out
+            // Lógica para el checkout (Día siguiente como mínimo)
             const nextDay = new Date(dateObj);
             nextDay.setDate(nextDay.getDate() + 1);
             const nextDayStr = nextDay.toISOString().split('T')[0];
             
             checkoutInput.min = nextDayStr;
+            checkoutInput.setAttribute('min', nextDayStr); // Refuerzo móvil
             checkoutInput.disabled = false;
             checkoutInput.classList.remove('cursor-not-allowed');
             checkoutInput.classList.add('cursor-pointer');
             
-            // Reset Check-out si no es válido
             if (state.checkout && state.checkout <= state.checkin) {
                 state.checkout = '';
                 document.getElementById('checkout-display').innerText = "Seleccionar";
@@ -799,7 +786,6 @@
             checkContinueButton();
         });
 
-        // LOGICA CHECK-OUT
         checkoutInput.addEventListener('change', (e) => {
             state.checkout = e.target.value;
             const options = { month: 'long', day: 'numeric' };
@@ -811,11 +797,9 @@
             document.getElementById('checkout-display').classList.add('text-stone-800', 'font-bold');
             document.getElementById('checkout-display-container').classList.add('border-amber-500');
             document.getElementById('checkout-icon').classList.replace('text-stone-300', 'text-amber-500');
-            
             checkContinueButton();
         });
 
-        // Dropdown PAX
         function togglePaxDropdown() {
             const dd = document.getElementById('pax-dropdown');
             const icon = document.getElementById('pax-icon');
@@ -833,7 +817,6 @@
             checkContinueButton();
         }
 
-        // Close dropdowns on click outside
         document.addEventListener('click', (e) => {
             if (!document.getElementById('pax-container').contains(e.target)) {
                 document.getElementById('pax-dropdown').classList.add('hidden');
@@ -871,7 +854,6 @@
             const diffTime = Math.abs(dateOut - dateIn);
             const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
             document.getElementById('summary-nights').innerText = `${diffDays} ${diffDays === 1 ? 'Noche' : 'Noches'}`;
-            // document.getElementById('summary-pax').innerText = state.pax; // Removed from new minimal summary
         }
 
         function editSelection() {
@@ -891,7 +873,7 @@
                 
                 btn.disabled = false;
                 btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.classList.add('hover:bg-green-600', 'shadow-xl');
+                btn.classList.add('hover:bg-amber-500', 'shadow-xl');
             } else {
                 box.classList.replace('bg-stone-900', 'bg-transparent');
                 box.classList.replace('border-stone-900', 'border-stone-400');
@@ -899,18 +881,12 @@
                 
                 btn.disabled = true;
                 btn.classList.add('opacity-50', 'cursor-not-allowed');
-                btn.classList.remove('hover:bg-green-600', 'shadow-xl');
+                btn.classList.remove('hover:bg-amber-500', 'shadow-xl');
             }
         }
-
-        // ==========================================
-        //  INTEGRACIÓN GOOGLE APPS SCRIPT
-        // ==========================================
         
         async function submitBooking(e) {
             e.preventDefault();
-            
-            // 1. Recopilar datos
             const firstName = document.getElementById('firstName').value;
             const lastName = document.getElementById('lastName').value;
             const email = document.getElementById('email').value;
@@ -925,7 +901,6 @@
             btn.innerHTML = 'Enviando...';
             btn.disabled = true;
 
-            // 2. Enviar a Google Apps Script
             const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec'; 
 
             if (APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec') {
@@ -947,13 +922,11 @@
                             notas: notes
                         })
                     });
-                    console.log('Datos enviados a Google Sheet/Calendar');
                 } catch (error) {
                     console.error('Error enviando datos:', error);
                 }
             }
 
-            // 3. Redirigir a WhatsApp
             const message = `¡Hola! 👋 Quisiera reservar la Luxury House.
             
 📅 *Fechas:*
@@ -975,7 +948,6 @@ Quedo atento a la confirmación de disponibilidad y precio. ¡Gracias!`;
             const encodedMessage = encodeURIComponent(message);
             window.open(`https://wa.me/573246874533?text=${encodedMessage}`, '_blank');
             
-            // Restaurar botón
             btn.innerHTML = originalBtnText;
             btn.disabled = false;
         }
