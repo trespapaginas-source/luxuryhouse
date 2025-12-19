@@ -815,9 +815,9 @@
 
             // 2. Enviar a Google Apps Script (Si se configura)
             // IMPORTANTE: Reemplazar 'URL_DE_TU_APPS_SCRIPT' con la URL real de tu despliegue
-            const APPS_SCRIPT_URL = 'URL_DE_TU_APPS_SCRIPT'; 
+            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec'; 
 
-            if (APPS_SCRIPT_URL !== 'URL_DE_TU_APPS_SCRIPT') {
+            if (APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec') {
                 try {
                     await fetch(APPS_SCRIPT_URL, {
                         method: 'POST',
