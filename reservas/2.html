@@ -4,10 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Luxury House Cabaña | Villas de Palmarito</title>
-    <meta name="description" content="Cabaña de lujo en Villas de Palmarito. 4 Habitaciones, capacidad para 16 personas, piscina privada y parqueadero para 5 carros.">
-    
-    <!-- Preconnect para acelerar conexiones externas -->
+    <meta name="description" content="Cabaña de lujo en Villas de Palmarito. 4 Habitaciones, capacidad para 16 personas, piscina privada y parqueadero. Reserva directa sin comisiones.">
+    <meta name="theme-color" content="#0c0a09"> <!-- Integra la barra del navegador móvil con el header -->
+    <link rel="canonical" href="https://luxuryhouse-pages.dev">
+
+    <!-- Open Graph / Social Media (SEO Técnico) -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Luxury House Cabaña | Villas de Palmarito">
+    <meta property="og:description" content="Tu refugio exclusivo con piscina privada, BBQ y capacidad para 16 personas.">
+    <meta property="og:image" content="entrada.jpg">
+
+    <!-- Preconexiones para acelerar carga de terceros -->
     <link rel="preconnect" href="https://cdn.tailwindcss.com">
+    <link rel="dns-prefetch" href="https://cdn.tailwindcss.com">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://images.unsplash.com">
@@ -15,87 +24,47 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
-    <!-- Google Fonts Optimizadas (Non-blocking) -->
+    <!-- Google Fonts Optimizadas (Swap para evitar bloqueo de renderizado) -->
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
     
     <style>
-        .font-serif { fontFamily: 'Playfair Display', serif; }
-        .font-body { fontFamily: 'Lato', sans-serif; }
+        /* Definiciones Base y Tipografía */
+        :root { --font-serif: 'Playfair Display', serif; --font-body: 'Lato', sans-serif; }
+        .font-serif { fontFamily: var(--font-serif); }
+        .font-body { fontFamily: var(--font-body); }
         
         /* Optimizaciones de renderizado */
-        .content-visibility-auto { content-visibility: auto; }
+        .content-visibility-auto { content-visibility: auto; contain-intrinsic-size: 1000px; } /* Mejora masiva de rendimiento en scroll */
         
-        .animate-fade-in-up {
-            animation: fadeInUp 1s ease-out forwards;
-            opacity: 0;
-        }
+        /* Animaciones */
+        .animate-fade-in-up { animation: fadeInUp 1s ease-out forwards; opacity: 0; }
+        @keyframes fadeInUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .animate-pan-subtle { animation: panSubtle 30s infinite alternate ease-in-out; will-change: transform; }
+        @keyframes panSubtle { 0% { transform: scale(1.15) translate(-3%, 0); } 100% { transform: scale(1.15) translate(3%, 0); } }
+
+        .animate-zoom-pulse { animation: zoomPulse 2s infinite ease-in-out; }
+        @keyframes zoomPulse { 0%, 100% { transform: scale(1); opacity: 0.8; } 50% { transform: scale(1.3); opacity: 1; } }
         
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+        .animate-pulse-slow { animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite; }
+        @keyframes pulseSlow { 0%, 100% { opacity: 1; transform: scale(1); } 50% { opacity: .85; transform: scale(1.05); } }
 
-        /* ANIMACIÓN DE PANEO SUTIL */
-        .animate-pan-subtle {
-            animation: panSubtle 30s infinite alternate ease-in-out;
-            will-change: transform;
-        }
-
-        @keyframes panSubtle {
-            0% { transform: scale(1.15) translate(-3%, 0); }
-            100% { transform: scale(1.15) translate(3%, 0); }
-        }
-
-        .fade-out {
-            opacity: 0;
-            pointer-events: none;
-            transition: opacity 0.5s ease-out;
-        }
-
-        .animate-zoom-pulse {
-            animation: zoomPulse 2s infinite ease-in-out;
-        }
-
-        @keyframes zoomPulse {
-            0%, 100% { transform: scale(1); opacity: 0.8; }
-            50% { transform: scale(1.3); opacity: 1; }
-        }
-        
-        /* Animación suave para la Trust Bar */
-        .animate-pulse-slow {
-            animation: pulseSlow 4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
-        }
-        
-        @keyframes pulseSlow {
-            0%, 100% { opacity: 1; transform: scale(1); }
-            50% { opacity: .85; transform: scale(1.05); }
-        }
-
-        /* ESTILOS DEL SISTEMA DE RESERVAS */
+        /* Utilidades */
+        .fade-out { opacity: 0; pointer-events: none; transition: opacity 0.5s ease-out; }
         .scrollbar-hide::-webkit-scrollbar { display: none; }
         .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
-
-        .hero-date-input::-webkit-calendar-picker-indicator {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            width: 100%;
-            height: 100%;
-            color: transparent;
-            background: transparent;
-            cursor: pointer;
-        }
+        
+        /* Custom Input Date Picker */
+        .hero-date-input::-webkit-calendar-picker-indicator { position: absolute; top: 0; left: 0; width: 100%; height: 100%; opacity: 0; cursor: pointer; }
     </style>
 
-    <!-- Lucide Icons (Diferido para no bloquear renderizado) -->
+    <!-- Script diferido para no bloquear el HTML -->
     <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.js" defer></script>
 </head>
 <body class="font-body text-gray-800 bg-neutral-50 selection:bg-amber-200">
 
     <!-- Navigation -->
-    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-6">
+    <nav id="navbar" class="fixed w-full z-50 transition-all duration-500 bg-transparent py-6 will-change-transform">
         <div class="container mx-auto px-6 flex justify-between items-center">
             <div id="nav-logo" class="font-serif text-2xl font-bold tracking-widest text-white transition-colors">
                 LUXURY HOUSE
@@ -110,7 +79,7 @@
             </div>
 
             <!-- Mobile Menu Button -->
-            <button id="menu-btn" class="md:hidden text-white transition-colors" aria-label="Abrir menú">
+            <button id="menu-btn" class="md:hidden text-white transition-colors p-1" aria-label="Abrir menú de navegación">
                 <i data-lucide="menu" width="28" height="28"></i>
             </button>
         </div>
@@ -127,10 +96,9 @@
     <!-- Hero Section -->
     <header class="relative h-screen flex items-center justify-center overflow-hidden">
         <div class="absolute inset-0 bg-stone-900">
-            <!-- Imagen optimizada: fetchpriority high, width/height explicito -->
             <img 
-                src="entrada.webp" 
-                alt="Luxury House Pool Area" 
+                src="entrada.jpg" 
+                alt="Vista principal de la piscina y cabaña Luxury House" 
                 width="1920" 
                 height="1080"
                 fetchpriority="high"
@@ -165,23 +133,20 @@
         </div>
     </header>
 
-    <!-- 🌟 TRUST BAR (PREMIUM LIGHT EDITION - CON EFECTO HIELO) -->
+    <!-- Trust Bar -->
     <section id="trust_bar" class="relative z-20 -mt-8 mx-4 md:mx-auto max-w-5xl content-visibility-auto">
         <div class="bg-white/80 backdrop-blur-md shadow-2xl rounded-xl border border-white/40 py-8 px-4">
             <div class="grid grid-cols-3 divide-x divide-stone-200">
-                <!-- Item 1 -->
                 <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow">
                     <i data-lucide="star" class="text-amber-500 mb-2 w-8 h-8 fill-amber-500 drop-shadow-sm"></i>
                     <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">5.0</span>
                     <span class="text-[10px] md:text-xs uppercase tracking-widest text-stone-500 font-bold">Airbnb Star</span>
                 </div>
-                <!-- Item 2 -->
                 <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow" style="animation-delay: 1s;">
                     <i data-lucide="shield-check" class="text-amber-500 mb-2 w-8 h-8 drop-shadow-sm"></i>
                     <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">100%</span>
                     <span class="text-[10px] md:text-xs uppercase tracking-widest text-stone-500 font-bold">Verificado</span>
                 </div>
-                <!-- Item 3 -->
                 <div class="flex flex-col items-center justify-center text-center px-2 animate-pulse-slow" style="animation-delay: 2s;">
                     <i data-lucide="users" class="text-amber-500 mb-2 w-8 h-8 drop-shadow-sm"></i>
                     <span class="font-serif text-stone-800 font-bold text-2xl md:text-3xl leading-none mb-1">+500</span>
@@ -191,11 +156,9 @@
         </div>
     </section>
 
-    <!-- Virtual Tour Section (LUMINOSO & INTEGRADO) -->
+    <!-- Virtual Tour Section -->
     <section id="tour-virtual" class="pt-24 pb-20 relative bg-white content-visibility-auto">
-        <!-- Fondo sutil decorativo -->
         <div class="absolute top-0 left-0 w-full h-full bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-stone-100 via-white to-white opacity-60"></div>
-        
         <div class="container mx-auto px-6 relative z-10">
             <div class="flex flex-col lg:flex-row gap-12 items-center">
                 <div class="lg:w-1/3">
@@ -213,20 +176,14 @@
                 </div>
 
                 <div class="lg:w-2/3 w-full h-[600px] md:h-[720px] bg-stone-100 rounded-2xl shadow-2xl overflow-hidden border border-stone-200 relative group">
-                    
-                    <!-- OVERLAY "GLASS" CON LOGO 360 GIGANTE -->
                     <div id="tour-overlay" class="absolute inset-0 z-20 flex flex-col gap-4 items-center justify-center bg-white/20 backdrop-blur-sm cursor-pointer transition-all duration-500 group-hover:bg-white/10">
-                        
-                        <!-- Logo 360 Construido con Tailwind -->
                         <div class="relative flex items-center justify-center w-32 h-32 md:w-40 md:h-40 rounded-full bg-white/90 backdrop-blur-md shadow-2xl border border-white/50 animate-zoom-pulse">
                             <div class="text-center">
                                 <span class="block font-bold text-4xl md:text-5xl text-stone-900 tracking-tighter">360°</span>
                                 <span class="block text-[10px] uppercase tracking-widest text-amber-600 font-bold mt-1">Click to Tour</span>
                             </div>
-                            <!-- Anillo decorativo -->
                             <div class="absolute inset-0 rounded-full border-2 border-amber-500/30 border-t-amber-500 animate-spin" style="animation-duration: 3s;"></div>
                         </div>
-
                     </div>
                     
                     <iframe 
@@ -237,14 +194,15 @@
                         loading="lazy"
                         allowFullScreen 
                         class="w-full h-full"
-                        title="Luxury House Virtual Tour"
+                        title="Recorrido Virtual Luxury House 360"
+                        aria-label="Recorrido Virtual 360 Grados"
                     ></iframe>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Intro / Story Section -->
+    <!-- Experience Section -->
     <section id="experiencia" class="py-20 md:py-32 px-6 bg-white border-t border-stone-100 content-visibility-auto">
         <div class="container mx-auto">
             <div class="flex flex-col lg:flex-row items-center gap-16">
@@ -252,19 +210,19 @@
                     <div class="absolute -top-4 -left-4 w-24 h-24 bg-amber-100 rounded-full blur-2xl z-0"></div>
                     <div class="relative z-10 grid grid-cols-2 gap-4">
                         <img 
-                            src="./experiencia-social.webp" 
-                            alt="Celebración en la piscina" 
+                            src="./experiencia-social.jpg" 
+                            alt="Celebración en la piscina de Luxury House" 
                             width="400" height="300"
                             loading="lazy"
-                            class="rounded-lg shadow-xl w-full h-64 object-cover transform translate-y-8 hover:scale-105 transition-transform duration-500"
+                            class="rounded-lg shadow-xl w-full h-64 object-cover transform translate-y-8 hover:scale-105 transition-transform duration-500 bg-stone-200"
                             onerror="this.src='https://images.unsplash.com/photo-1566073771259-6a8506099945?q=75&w=800&auto=format&fit=crop'"
                         >
                         <img 
-                            src="./experiencia-romantica.webp" 
+                            src="./experiencia-romantica.jpg" 
                             alt="Decoración romántica en piscina" 
                             width="400" height="300"
                             loading="lazy"
-                            class="rounded-lg shadow-xl w-full h-64 object-cover hover:scale-105 transition-transform duration-500"
+                            class="rounded-lg shadow-xl w-full h-64 object-cover hover:scale-105 transition-transform duration-500 bg-stone-200"
                             onerror="this.src='https://images.unsplash.com/photo-1540541338287-41700207dee6?q=75&w=800&auto=format&fit=crop'"
                         >
                     </div>
@@ -297,48 +255,42 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Amenity Items (Optimized Structure) -->
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="users" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Capacidad para 16</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Espacios amplios y cómodos para grupos grandes y familias completas.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="bed-double" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">4 Habitaciones de Lujo</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Diseñadas para el descanso total, con privacidad y confort superior.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="waves" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Piscina Fogata</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">El corazón de la casa. Perfecta para refrescarse bajo el sol.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="utensils" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Zona BBQ y Kiosko</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Equipado totalmente para tus asados y reuniones al aire libre.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="wifi" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Conectividad Total</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Wi-Fi de alta velocidad para compartir tus momentos o trabajar remoto.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="music" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Ambiente Social</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Sonido y espacios diseñados para la diversión y el entretenimiento.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="car" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Parqueadero (5 Carros)</h4>
                     <p class="text-stone-500 text-sm leading-relaxed">Amplio espacio privado y seguro para la tranquilidad de todos.</p>
                 </div>
-
                 <div class="bg-white p-8 rounded-xl shadow-sm hover:shadow-xl transition-all duration-300 border-b-4 border-transparent hover:border-amber-400 group">
                     <div class="text-stone-400 group-hover:text-amber-500 transition-colors mb-6"><i data-lucide="coffee" width="32" height="32"></i></div>
                     <h4 class="font-serif text-xl font-bold text-stone-800 mb-3">Cocina Equipada</h4>
@@ -348,21 +300,18 @@
         </div>
     </section>
 
-    <!-- Testimonial Section -->
+    <!-- Testimonials -->
     <section class="py-24 bg-white relative overflow-hidden content-visibility-auto">
-        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-50"></div>
+        <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 bg-amber-50 rounded-full blur-3xl opacity-50 pointer-events-none"></div>
         <div class="container mx-auto px-6 relative z-10">
-            
             <div class="text-center mb-16">
                 <i data-lucide="star" class="text-amber-400 fill-current w-8 h-8 mx-auto mb-4"></i>
-                <h2 class="font-serif text-3xl md:text-5xl text-stone-800 italic leading-tight">
-                    Experiencias Inolvidables
-                </h2>
+                <h2 class="font-serif text-3xl md:text-5xl text-stone-800 italic leading-tight">Experiencias Inolvidables</h2>
                 <p class="text-stone-500 mt-4">Nuestros huéspedes lo confirman.</p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonio 1 -->
+                <!-- Testimonial 1 -->
                 <div class="bg-stone-50 p-8 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
                     <div class="flex gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
@@ -371,12 +320,10 @@
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                     </div>
-                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">
-                        "El recorrido 360° me ayudó un montón a decidirme. Pude ver todo como si estuviera ahí, cada rincón, y eso me dio la seguridad que necesitaba. ¡Lo recomiendo!"
-                    </p>
+                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">"El recorrido 360° me ayudó un montón a decidirme. Pude ver todo como si estuviera ahí, cada rincón, y eso me dio la seguridad que necesitaba. ¡Lo recomiendo!"</p>
                     <div class="flex items-center space-x-3">
                         <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
-                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Valeria Gomez" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Foto de Valeria Gomez" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <p class="font-bold text-stone-900 text-sm">Valeria Gomez</p>
@@ -384,8 +331,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonio 2 -->
+                <!-- Testimonial 2 -->
                 <div class="bg-stone-50 p-8 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
                     <div class="flex gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
@@ -394,12 +340,10 @@
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                     </div>
-                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">
-                        "Celebramos el aniversario de mis padres y fue mágico. La zona de BBQ es perfecta y la privacidad es inigualable. Definitivamente volveremos el próximo año."
-                    </p>
+                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">"Celebramos el aniversario de mis padres y fue mágico. La zona de BBQ es perfecta y la privacidad es inigualable. Definitivamente volveremos el próximo año."</p>
                     <div class="flex items-center space-x-3">
                          <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
-                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Carlos Méndez" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Foto de Carlos Méndez" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <p class="font-bold text-stone-900 text-sm">Carlos Méndez</p>
@@ -407,8 +351,7 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- Testimonio 3 -->
+                <!-- Testimonial 3 -->
                 <div class="bg-stone-50 p-8 rounded-xl shadow-sm border border-stone-100 hover:shadow-md transition-shadow">
                     <div class="flex gap-1 mb-4">
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
@@ -417,12 +360,10 @@
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                         <i data-lucide="star" class="w-4 h-4 text-amber-400 fill-current"></i>
                     </div>
-                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">
-                        "La atención a los detalles es increíble. Las habitaciones son súper cómodas y la fogata de la piscina me enamoró. Un 10 de 10 en servicio y calidad."
-                    </p>
+                    <p class="font-body text-stone-600 text-lg leading-relaxed mb-6 italic">"La atención a los detalles es increíble. Las habitaciones son súper cómodas y la fogata de la piscina me enamoró. Un 10 de 10 en servicio y calidad."</p>
                     <div class="flex items-center space-x-3">
                          <div class="w-12 h-12 bg-stone-200 rounded-full overflow-hidden border-2 border-amber-400">
-                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Andrea Torres" class="w-full h-full object-cover">
+                            <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=75&w=200&auto=format&fit=crop" loading="lazy" width="150" height="150" alt="Foto de Andrea Torres" class="w-full h-full object-cover">
                         </div>
                         <div>
                             <p class="font-bold text-stone-900 text-sm">Andrea Torres</p>
@@ -430,118 +371,84 @@
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- FAQ SECTION -->
+    <!-- FAQ Section -->
     <section id="faq" class="py-16 bg-stone-50 border-t border-stone-200 content-visibility-auto">
         <div class="container mx-auto px-6 max-w-3xl">
             <h2 class="font-serif text-3xl font-bold text-stone-800 text-center mb-8">Resuelve tus dudas antes de reservar</h2>
-            
             <div class="space-y-4">
                 <details class="group bg-white rounded-lg border border-stone-200 p-4 cursor-pointer transition-all duration-300 hover:shadow-md open:border-amber-400">
                     <summary class="font-bold text-stone-800 list-none flex justify-between items-center">
                         1. ¿Cómo es el proceso de pago seguro?
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">
-                        Puedes reservar tu fecha con un abono del 50% mediante transferencia bancaria verificada. El saldo restante se paga al momento del check-in. Todo el proceso se confirma vía WhatsApp con recibo digital.
-                    </p>
+                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">Puedes reservar tu fecha con un abono del 50% mediante transferencia bancaria verificada. El saldo restante se paga al momento del check-in. Todo el proceso se confirma vía WhatsApp con recibo digital.</p>
                 </details>
-
                 <details class="group bg-white rounded-lg border border-stone-200 p-4 cursor-pointer transition-all duration-300 hover:shadow-md open:border-amber-400">
                     <summary class="font-bold text-stone-800 list-none flex justify-between items-center">
                         2. ¿Cuál es el horario de Check-in y Check-out?
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">
-                        El check-in es a partir de las 3:00 PM para que disfrutes la tarde, y el check-out es a las 11:00 AM. Si necesitas horarios flexibles, consúltanos disponibilidad por chat.
-                    </p>
+                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">El check-in es a partir de las 3:00 PM para que disfrutes la tarde, y el check-out es a las 11:00 AM. Si necesitas horarios flexibles, consúltanos disponibilidad por chat.</p>
                 </details>
-
                 <details class="group bg-white rounded-lg border border-stone-200 p-4 cursor-pointer transition-all duration-300 hover:shadow-md open:border-amber-400">
                     <summary class="font-bold text-stone-800 list-none flex justify-between items-center">
                         3. ¿Permiten mascotas en la propiedad?
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">
-                        ¡Por supuesto! Somos Pet Friendly. Tus mascotas son parte de la familia y son bienvenidas (máximo 2 mascotas por estadía, sujeto a depósito de garantía).
-                    </p>
+                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">¡Por supuesto! Somos Pet Friendly. Tus mascotas son parte de la familia y son bienvenidas (máximo 2 mascotas por estadía, sujeto a depósito de garantía).</p>
                 </details>
-
                 <details class="group bg-white rounded-lg border border-stone-200 p-4 cursor-pointer transition-all duration-300 hover:shadow-md open:border-amber-400">
                     <summary class="font-bold text-stone-800 list-none flex justify-between items-center">
                         4. ¿Es fácil llegar? ¿El camino es pavimentado?
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">
-                        Totalmente accesible. La vía está pavimentada hasta la entrada del conjunto de Villas. Te enviaremos la ubicación exacta (Waze/Google Maps) al confirmar tu reserva.
-                    </p>
+                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">Totalmente accesible. La vía está pavimentada hasta la entrada del conjunto de Villas. Te enviaremos la ubicación exacta (Waze/Google Maps) al confirmar tu reserva.</p>
                 </details>
-
                 <details class="group bg-white rounded-lg border border-stone-200 p-4 cursor-pointer transition-all duration-300 hover:shadow-md open:border-amber-400">
                     <summary class="font-bold text-stone-800 list-none flex justify-between items-center">
                         5. ¿Qué incluye la cocina?
                         <i data-lucide="chevron-down" class="w-5 h-5 text-amber-500 group-open:rotate-180 transition-transform"></i>
                     </summary>
-                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">
-                        La cocina está equipada con nevera, estufa, licuadora, cafetera y menaje básico para 16 personas. Solo necesitas traer tus ingredientes.
-                    </p>
+                    <p class="mt-3 text-stone-600 leading-relaxed text-sm">La cocina está equipada con nevera, estufa, licuadora, cafetera y menaje básico para 16 personas. Solo necesitas traer tus ingredientes.</p>
                 </details>
             </div>
         </div>
     </section>
 
-    <!-- BOOKING SYSTEM SECTION (Diseño Actualizado) -->
+    <!-- Booking Section -->
     <section id="reservas" class="py-20 bg-stone-100 text-stone-800 relative content-visibility-auto">
         <div class="container mx-auto px-6 relative z-10 max-w-6xl">
-            
             <div class="mb-12 text-center">
                 <h2 class="font-serif text-3xl md:text-5xl font-bold mb-4 text-stone-800">Asegura tu fecha hoy</h2>
-                <p class="text-amber-600 font-bold uppercase tracking-wide animate-pulse">
-                    ⚠️ Alta demanda para los próximos fines de semana
-                </p>
+                <p class="text-amber-600 font-bold uppercase tracking-wide animate-pulse">⚠️ Alta demanda para los próximos fines de semana</p>
             </div>
 
             <div class="flex flex-col lg:flex-row gap-8 items-start">
-                
-                <!-- 🌟 COLUMNA IZQUIERDA: DISEÑO "APPLE" (MINIMALISTA) -->
+                <!-- Benefits Column -->
                 <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg border border-stone-200 shadow-md">
                     <h3 class="font-serif text-xl font-bold mb-6 text-stone-800">¿Por qué reservar aquí?</h3>
                     <ul class="space-y-6 mb-8">
                         <li class="flex items-start gap-4">
                             <i data-lucide="gem" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="block text-sm text-stone-900 font-bold">Sin intermediarios</strong>
-                                <span class="text-xs text-stone-500 font-light">Trato directo y transparente.</span>
-                            </div>
+                            <div><strong class="block text-sm text-stone-900 font-bold">Sin intermediarios</strong><span class="text-xs text-stone-500 font-light">Trato directo y transparente.</span></div>
                         </li>
                         <li class="flex items-start gap-4">
                             <i data-lucide="badge-check" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="block text-sm text-stone-900 font-bold">Mejor precio garantizado</strong>
-                                <span class="text-xs text-stone-500 font-light">Sin comisiones de apps.</span>
-                            </div>
+                            <div><strong class="block text-sm text-stone-900 font-bold">Mejor precio garantizado</strong><span class="text-xs text-stone-500 font-light">Sin comisiones de apps.</span></div>
                         </li>
                         <li class="flex items-start gap-4">
                             <i data-lucide="zap" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="block text-sm text-stone-900 font-bold">Confirmación Inmediata</strong>
-                                <span class="text-xs text-stone-500 font-light">Gestión ágil por WhatsApp.</span>
-                            </div>
+                            <div><strong class="block text-sm text-stone-900 font-bold">Confirmación Inmediata</strong><span class="text-xs text-stone-500 font-light">Gestión ágil por WhatsApp.</span></div>
                         </li>
                         <li class="flex items-start gap-4">
                             <i data-lucide="headphones" class="text-amber-500 w-5 h-5 shrink-0 mt-0.5"></i>
-                            <div>
-                                <strong class="block text-sm text-stone-900 font-bold">Asistencia VIP</strong>
-                                <span class="text-xs text-stone-500 font-light">Soporte 24/7 para tu llegada.</span>
-                            </div>
+                            <div><strong class="block text-sm text-stone-900 font-bold">Asistencia VIP</strong><span class="text-xs text-stone-500 font-light">Soporte 24/7 para tu llegada.</span></div>
                         </li>
                     </ul>
-                    
-                    <!-- BOTÓN CHAT OPTIMIZADO PARA MÓVIL (Full Width & Touch Friendly) -->
                     <div class="pt-4 border-t border-stone-100">
                         <a href="https://wa.me/573246874533" target="_blank" class="block w-full py-4 bg-stone-50 border border-stone-200 rounded-lg text-center active:bg-stone-100 transition-colors group">
                             <p class="text-xs text-stone-500 mb-1">¿Tienes dudas puntuales?</p>
@@ -553,50 +460,39 @@
                     </div>
                 </div>
 
-                <!-- 🌟 COLUMNA DERECHA: SISTEMA DE RESERVAS -->
+                <!-- Booking System Column -->
                 <div class="w-full lg:w-2/3">
-                    <!-- 1. BARRA DE SELECCIÓN -->
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8 bg-white p-6 rounded-lg border border-stone-200 shadow-lg">
-                        
-                        <!-- A. FECHA LLEGADA -->
                         <div class="relative group">
                             <label class="block text-xs uppercase tracking-widest text-amber-600 mb-2 font-medium">Llegada</label>
                             <div class="relative h-12">
-                                <!-- ID for JS targeting -->
-                                <input type="date" id="checkin-input" class="hero-date-input absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10">
+                                <input type="date" id="checkin-input" class="hero-date-input absolute inset-0 opacity-0 w-full h-full cursor-pointer z-10" aria-label="Fecha de llegada">
                                 <div id="checkin-display-container" class="absolute inset-0 text-xl py-2 border-b border-stone-300 text-stone-500 transition-colors duration-300 flex justify-between items-center pointer-events-none group-hover:border-amber-500">
                                     <span id="checkin-display" class="font-light truncate">Seleccionar</span>
                                     <i data-lucide="calendar" id="checkin-icon" class="w-5 h-5 text-stone-400"></i>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- B. FECHA SALIDA -->
                         <div class="relative group">
                             <label class="block text-xs uppercase tracking-widest text-amber-600 mb-2 font-medium">Salida</label>
                             <div class="relative h-12">
-                                <input type="date" id="checkout-input" disabled class="hero-date-input absolute inset-0 opacity-0 w-full h-full cursor-not-allowed z-10">
+                                <input type="date" id="checkout-input" disabled class="hero-date-input absolute inset-0 opacity-0 w-full h-full cursor-not-allowed z-10" aria-label="Fecha de salida">
                                 <div id="checkout-display-container" class="absolute inset-0 text-xl py-2 border-b border-stone-300 text-stone-400 transition-colors duration-300 flex justify-between items-center pointer-events-none group-hover:border-amber-500">
                                     <span id="checkout-display" class="font-light truncate">Seleccionar</span>
                                     <i data-lucide="calendar" id="checkout-icon" class="w-5 h-5 text-stone-300"></i>
                                 </div>
                             </div>
                         </div>
-
-                        <!-- C. PERSONAS -->
                         <div class="relative" id="pax-container">
                             <label class="block text-xs uppercase tracking-widest text-amber-600 mb-2 font-medium">Huéspedes</label>
-                            <div onclick="togglePaxDropdown()" id="pax-display-container" class="cursor-pointer text-xl py-2 border-b border-stone-300 text-stone-500 transition-colors duration-300 flex justify-between items-center hover:border-amber-500 h-12">
+                            <div onclick="togglePaxDropdown()" id="pax-display-container" class="cursor-pointer text-xl py-2 border-b border-stone-300 text-stone-500 transition-colors duration-300 flex justify-between items-center hover:border-amber-500 h-12" role="button" aria-haspopup="true" aria-expanded="false">
                                 <span id="pax-display" class="font-light">Cantidad</span>
                                 <i data-lucide="chevron-down" id="pax-icon" class="w-5 h-5 text-stone-400 transition-transform duration-300"></i>
                             </div>
-                            <div id="pax-dropdown" class="hidden absolute top-full left-0 w-full bg-white text-stone-800 border border-stone-200 shadow-xl z-20 mt-2 max-h-60 overflow-y-auto transition-all duration-300 scrollbar-hide rounded-sm">
-                                <!-- Options generated by JS -->
-                            </div>
+                            <div id="pax-dropdown" class="hidden absolute top-full left-0 w-full bg-white text-stone-800 border border-stone-200 shadow-xl z-20 mt-2 max-h-60 overflow-y-auto transition-all duration-300 scrollbar-hide rounded-sm"></div>
                         </div>
                     </div>
 
-                    <!-- BOTÓN CONTINUAR -->
                     <div id="continue-btn-container" class="mb-8 transition-all duration-700 ease-out flex justify-center opacity-0 translate-y-4 pointer-events-none">
                         <button onclick="goToForm()" class="group flex items-center gap-4 px-10 py-4 bg-amber-600 text-white rounded-sm hover:bg-amber-500 transition-all duration-300 shadow-lg shadow-amber-900/20 w-full justify-center">
                             <span class="text-sm font-bold tracking-widest uppercase">Continuar Reserva</span>
@@ -604,71 +500,52 @@
                         </button>
                     </div>
 
-                    <!-- 2. FORMULARIO DE DATOS -->
+                    <!-- Hidden Form Section -->
                     <div id="form-section" class="hidden border-t border-stone-300 pt-8 relative z-10 bg-white p-6 rounded-lg shadow-sm">
                         <div class="flex flex-col gap-8 animate-fade-in-up">
-                            
-                            <!-- Resumen Integrado (CORREGIDO DE AZUL A ÁMBAR/GLASS) -->
                             <div class="bg-amber-50/50 p-4 rounded-lg border border-amber-100/50 backdrop-blur-sm flex flex-wrap gap-4 justify-between items-center text-sm">
-                                <div>
-                                    <span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Estadía</span>
-                                    <strong id="summary-nights" class="text-stone-800 text-lg">-</strong>
-                                </div>
-                                <div>
-                                    <span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Fechas</span>
-                                    <span class="text-stone-600"><span id="summary-checkin">-</span> al <span id="summary-checkout">-</span></span>
-                                </div>
+                                <div><span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Estadía</span><strong id="summary-nights" class="text-stone-800 text-lg">-</strong></div>
+                                <div><span class="block text-[10px] text-amber-600 uppercase tracking-widest font-bold">Fechas</span><span class="text-stone-600"><span id="summary-checkin">-</span> al <span id="summary-checkout">-</span></span></div>
                                 <button onclick="editSelection()" class="text-xs text-amber-700 underline font-bold hover:text-amber-500 transition-colors">Editar</button>
                             </div>
 
-                            <!-- Campos Formulario -->
                             <div>
                                 <h3 class="text-sm uppercase tracking-widest text-amber-600 mb-6 font-bold">Tus Datos para Confirmar</h3>
-                                
                                 <form id="booking-form" onsubmit="submitBooking(event)" class="space-y-6">
                                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                         <div class="group relative">
-                                            <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Nombre</label>
-                                            <input type="text" id="firstName" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. Juan">
+                                            <label for="firstName" class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Nombre</label>
+                                            <input type="text" id="firstName" name="firstName" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. Juan">
                                         </div>
                                         <div class="group relative">
-                                            <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Apellido</label>
-                                            <input type="text" id="lastName" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. Pérez">
+                                            <label for="lastName" class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Apellido</label>
+                                            <input type="text" id="lastName" name="lastName" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. Pérez">
                                         </div>
                                     </div>
-
                                     <div class="group relative">
-                                        <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Email</label>
-                                        <input type="email" id="email" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. juan@email.com">
+                                        <label for="email" class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Email</label>
+                                        <input type="email" id="email" name="email" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. juan@email.com">
                                     </div>
-
                                     <div class="group relative">
-                                        <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Número Celular (WhatsApp)</label>
-                                        <input type="tel" id="phone" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. 300 123 4567">
+                                        <label for="phone" class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Número Celular (WhatsApp)</label>
+                                        <input type="tel" id="phone" name="phone" required class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400" placeholder="Ej. 300 123 4567">
                                     </div>
-
                                     <div class="group">
-                                        <label class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Comentarios</label>
-                                        <textarea id="notes-input" class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400 resize-none h-20" placeholder="¿Celebras algo especial?"></textarea>
+                                        <label for="notes-input" class="block text-xs uppercase tracking-widest text-stone-500 mb-2">Comentarios</label>
+                                        <textarea id="notes-input" name="notes" class="w-full py-2 border-b border-stone-300 bg-transparent outline-none focus:border-amber-500 transition-colors text-stone-800 font-light placeholder-stone-400 resize-none h-20" placeholder="¿Celebras algo especial?"></textarea>
                                     </div>
-
                                     <div class="pt-4 border-t border-stone-200 mt-4 space-y-4">
                                         <label class="flex items-start gap-4 cursor-pointer group select-none">
                                             <div id="terms-check-box" class="w-5 h-5 border border-stone-400 flex items-center justify-center transition-colors duration-300 mt-1 bg-transparent min-w-[1.25rem]">
                                                 <input type="checkbox" id="terms" class="hidden" onchange="toggleTerms()">
                                                 <i data-lucide="check" class="w-3 h-3 text-white hidden" id="terms-check-icon"></i>
                                             </div>
-                                            <span class="text-sm text-stone-500 font-light leading-relaxed">
-                                                Acepto la política de tratamiento de datos personales.
-                                            </span>
+                                            <span class="text-sm text-stone-500 font-light leading-relaxed">Acepto la política de tratamiento de datos personales.</span>
                                         </label>
                                     </div>
-
-                                    <!-- BOTÓN WHATSAPP FINAL -->
                                     <div class="pt-4 flex justify-center">
                                         <button id="submit-btn" type="submit" disabled class="w-full py-5 bg-amber-600 text-white text-base font-bold tracking-widest uppercase rounded-sm transition-all duration-300 opacity-50 cursor-not-allowed hover:bg-amber-500 hover:shadow-xl hover:scale-[1.01] flex items-center justify-center gap-3 shadow-lg">
-                                            <i data-lucide="message-circle" class="w-6 h-6"></i>
-                                            Confirmar en WhatsApp
+                                            <i data-lucide="message-circle" class="w-6 h-6"></i> Confirmar en WhatsApp
                                         </button>
                                     </div>
                                 </form>
@@ -688,294 +565,311 @@
                     <h4 class="font-serif text-2xl text-white font-bold mb-2">LUXURY HOUSE</h4>
                     <p class="text-sm">Villas de Palmarito, Atlántico.</p>
                 </div>
-                
                 <div class="flex space-x-6 mb-6 md:mb-0">
                     <a href="#experiencia" class="hover:text-white transition-colors">Experiencia</a>
                     <a href="#comodidades" class="hover:text-white transition-colors">Comodidades</a>
                     <a href="#tour-virtual" class="hover:text-white transition-colors">Tour 360°</a>
                 </div>
-
-                <div class="text-sm">
-                    &copy; <span id="year"></span> Luxury House Cabaña.
-                </div>
+                <div class="text-sm">&copy; <span id="year"></span> Luxury House Cabaña.</div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript para interactividad -->
+    <!-- Logic Optimized -->
     <script>
-        // Inicializar iconos Lucide - CORREGIDO
-        // Se ejecuta cuando el DOM está listo, asegurando que Lucide ya esté cargado.
         document.addEventListener('DOMContentLoaded', () => {
-            if (typeof lucide !== 'undefined') {
-                lucide.createIcons();
-            } else {
-                console.warn('Lucide no se ha cargado correctamente.');
+            // 1. Inicialización Diferida de Iconos
+            if (typeof lucide !== 'undefined') lucide.createIcons();
+            
+            // 2. Footer Year
+            document.getElementById('year').textContent = new Date().getFullYear();
+
+            // 3. Tour Overlay Logic
+            const tourOverlay = document.getElementById('tour-overlay');
+            if(tourOverlay) {
+                tourOverlay.addEventListener('click', function() {
+                    this.classList.add('fade-out');
+                }, { passive: true });
             }
-        });
 
-        document.getElementById('year').textContent = new Date().getFullYear();
-
-        const tourOverlay = document.getElementById('tour-overlay');
-        tourOverlay.addEventListener('click', function() {
-            this.classList.add('fade-out');
-        });
-
-        const navbar = document.getElementById('navbar');
-        const navLogo = document.getElementById('nav-logo');
-        const navLinksContainer = document.getElementById('nav-links');
-        const menuBtn = document.getElementById('menu-btn');
-        const mobileMenu = document.getElementById('mobile-menu');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
-                navbar.classList.remove('bg-transparent', 'py-6');
-                navLogo.classList.replace('text-white', 'text-stone-800');
-                navLinksContainer.classList.replace('text-white/90', 'text-stone-600');
-                menuBtn.classList.replace('text-white', 'text-stone-800');
-            } else {
-                navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
-                navbar.classList.add('bg-transparent', 'py-6');
-                navLogo.classList.replace('text-stone-800', 'text-white');
-                navLinksContainer.classList.replace('text-stone-600', 'text-white/90');
-                menuBtn.classList.replace('text-stone-800', 'text-white');
-            }
-        });
-
-        menuBtn.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-            mobileMenu.classList.toggle('flex');
-        });
-
-        document.querySelectorAll('.mobile-link').forEach(link => {
-            link.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                mobileMenu.classList.remove('flex');
-            });
-        });
-
-        // ==========================================
-        // LÓGICA DEL SISTEMA DE RESERVAS
-        // ==========================================
-        
-        let state = { checkin: '', checkout: '', pax: '', terms: false };
-        const paxDropdown = document.getElementById('pax-dropdown');
-        for (let i = 1; i <= 20; i++) {
-            const div = document.createElement('div');
-            div.className = 'px-4 py-3 text-sm text-stone-600 hover:bg-stone-100 hover:text-stone-900 cursor-pointer transition-colors font-body';
-            div.innerText = `${i} ${i === 1 ? 'huésped' : 'huéspedes'}`;
-            div.onclick = () => selectPax(`${i} ${i === 1 ? 'huésped' : 'huéspedes'}`);
-            paxDropdown.appendChild(div);
-        }
-
-        const checkinInput = document.getElementById('checkin-input');
-        const checkoutInput = document.getElementById('checkout-input');
-        
-        // --- FIX CRÍTICO FECHAS MÓVIL ---
-        // Se ejecuta al inicio para bloquear días pasados inmediatamente
-        const today = new Date().toISOString().split('T')[0];
-        checkinInput.min = today; 
-        checkinInput.setAttribute('min', today); // Refuerzo para algunos navegadores móviles
-
-        checkinInput.addEventListener('change', (e) => {
-            state.checkin = e.target.value;
-            const options = { month: 'long', day: 'numeric' };
-            const dateParts = state.checkin.split('-');
-            const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-            const displayDate = dateObj.toLocaleDateString('es-ES', options); 
+            // 4. Scroll Logic (Optimized with RequestAnimationFrame)
+            const navbar = document.getElementById('navbar');
+            const navLogo = document.getElementById('nav-logo');
+            const navLinksContainer = document.getElementById('nav-links');
+            const menuBtn = document.getElementById('menu-btn');
             
-            document.getElementById('checkin-display').innerText = displayDate;
-            document.getElementById('checkin-display').classList.add('text-stone-800', 'font-bold');
-            document.getElementById('checkin-display').classList.remove('text-stone-500');
-            document.getElementById('checkin-display-container').classList.add('border-amber-500');
-            document.getElementById('checkin-icon').classList.replace('text-stone-400', 'text-amber-500');
-            
-            // Lógica para el checkout (Día siguiente como mínimo)
-            const nextDay = new Date(dateObj);
-            nextDay.setDate(nextDay.getDate() + 1);
-            const nextDayStr = nextDay.toISOString().split('T')[0];
-            
-            checkoutInput.min = nextDayStr;
-            checkoutInput.setAttribute('min', nextDayStr); // Refuerzo móvil
-            checkoutInput.disabled = false;
-            checkoutInput.classList.remove('cursor-not-allowed');
-            checkoutInput.classList.add('cursor-pointer');
-            
-            if (state.checkout && state.checkout <= state.checkin) {
-                state.checkout = '';
-                document.getElementById('checkout-display').innerText = "Seleccionar";
-                document.getElementById('checkout-display').classList.remove('text-stone-800', 'font-bold');
-                document.getElementById('checkout-display-container').classList.remove('border-amber-500');
-                document.getElementById('checkout-icon').classList.replace('text-amber-500', 'text-stone-300');
-            }
-            checkContinueButton();
-        });
-
-        checkoutInput.addEventListener('change', (e) => {
-            state.checkout = e.target.value;
-            const options = { month: 'long', day: 'numeric' };
-            const dateParts = state.checkout.split('-');
-            const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
-            const displayDate = dateObj.toLocaleDateString('es-ES', options);
-            
-            document.getElementById('checkout-display').innerText = displayDate;
-            document.getElementById('checkout-display').classList.add('text-stone-800', 'font-bold');
-            document.getElementById('checkout-display-container').classList.add('border-amber-500');
-            document.getElementById('checkout-icon').classList.replace('text-stone-300', 'text-amber-500');
-            checkContinueButton();
-        });
-
-        function togglePaxDropdown() {
-            const dd = document.getElementById('pax-dropdown');
-            const icon = document.getElementById('pax-icon');
-            dd.classList.toggle('hidden');
-            icon.classList.toggle('rotate-180');
-        }
-
-        function selectPax(val) {
-            state.pax = val;
-            document.getElementById('pax-display').innerText = val;
-            document.getElementById('pax-display').classList.add('text-stone-800', 'font-bold');
-            document.getElementById('pax-display-container').classList.add('border-amber-500');
-            document.getElementById('pax-icon').classList.replace('text-stone-400', 'text-amber-500');
-            togglePaxDropdown();
-            checkContinueButton();
-        }
-
-        document.addEventListener('click', (e) => {
-            if (!document.getElementById('pax-container').contains(e.target)) {
-                document.getElementById('pax-dropdown').classList.add('hidden');
-                document.getElementById('pax-icon').classList.remove('rotate-180');
-            }
-        });
-
-        function checkContinueButton() {
-            const btn = document.getElementById('continue-btn-container');
-            if (state.checkin && state.checkout && state.pax) {
-                btn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
-                btn.classList.add('opacity-100', 'translate-y-0');
-            }
-        }
-
-        function goToForm() {
-            const section = document.getElementById('form-section');
-            section.classList.remove('hidden');
-            updateSummary();
-            setTimeout(() => {
-                section.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-        }
-
-        function updateSummary() {
-            const options = { year: 'numeric', month: 'long', day: 'numeric' };
-            const inParts = state.checkin.split('-');
-            const outParts = state.checkout.split('-');
-            const dateIn = new Date(inParts[0], inParts[1] - 1, inParts[2]);
-            const dateOut = new Date(outParts[0], outParts[1] - 1, outParts[2]);
-            
-            document.getElementById('summary-checkin').innerText = dateIn.toLocaleDateString('es-ES', options);
-            document.getElementById('summary-checkout').innerText = dateOut.toLocaleDateString('es-ES', options);
-            
-            const diffTime = Math.abs(dateOut - dateIn);
-            const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
-            document.getElementById('summary-nights').innerText = `${diffDays} ${diffDays === 1 ? 'Noche' : 'Noches'}`;
-        }
-
-        function editSelection() {
-            document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
-        }
-
-        function toggleTerms() {
-            state.terms = !state.terms;
-            const box = document.getElementById('terms-check-box');
-            const icon = document.getElementById('terms-check-icon');
-            const btn = document.getElementById('submit-btn');
-
-            if (state.terms) {
-                box.classList.replace('bg-transparent', 'bg-stone-900');
-                box.classList.replace('border-stone-400', 'border-stone-900');
-                icon.classList.remove('hidden');
-                
-                btn.disabled = false;
-                btn.classList.remove('opacity-50', 'cursor-not-allowed');
-                btn.classList.add('hover:bg-amber-500', 'shadow-xl');
-            } else {
-                box.classList.replace('bg-stone-900', 'bg-transparent');
-                box.classList.replace('border-stone-900', 'border-stone-400');
-                icon.classList.add('hidden');
-                
-                btn.disabled = true;
-                btn.classList.add('opacity-50', 'cursor-not-allowed');
-                btn.classList.remove('hover:bg-amber-500', 'shadow-xl');
-            }
-        }
-        
-        async function submitBooking(e) {
-            e.preventDefault();
-            const firstName = document.getElementById('firstName').value;
-            const lastName = document.getElementById('lastName').value;
-            const email = document.getElementById('email').value;
-            const phone = document.getElementById('phone').value;
-            const notes = document.getElementById('notes-input').value;
-            const checkin = state.checkin;
-            const checkout = state.checkout;
-            const pax = state.pax;
-
-            const btn = document.getElementById('submit-btn');
-            const originalBtnText = btn.innerHTML;
-            btn.innerHTML = 'Enviando...';
-            btn.disabled = true;
-
-            const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec'; 
-
-            if (APPS_SCRIPT_URL !== 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec') {
-                try {
-                    await fetch(APPS_SCRIPT_URL, {
-                        method: 'POST',
-                        mode: 'no-cors',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            nombre: firstName,
-                            apellido: lastName,
-                            email: email,
-                            telefono: phone,
-                            llegada: checkin,
-                            salida: checkout,
-                            huespedes: pax,
-                            notas: notes
-                        })
+            let ticking = false;
+            window.addEventListener('scroll', () => {
+                if (!ticking) {
+                    window.requestAnimationFrame(() => {
+                        updateNav(window.scrollY);
+                        ticking = false;
                     });
-                } catch (error) {
-                    console.error('Error enviando datos:', error);
+                    ticking = true;
+                }
+            }, { passive: true });
+
+            function updateNav(scrollPos) {
+                if (scrollPos > 50) {
+                    navbar.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                    navbar.classList.remove('bg-transparent', 'py-6');
+                    navLogo.classList.replace('text-white', 'text-stone-800');
+                    navLinksContainer.classList.replace('text-white/90', 'text-stone-600');
+                    menuBtn.classList.replace('text-white', 'text-stone-800');
+                } else {
+                    navbar.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'py-3');
+                    navbar.classList.add('bg-transparent', 'py-6');
+                    navLogo.classList.replace('text-stone-800', 'text-white');
+                    navLinksContainer.classList.replace('text-stone-600', 'text-white/90');
+                    menuBtn.classList.replace('text-stone-800', 'text-white');
                 }
             }
 
-            const message = `¡Hola! 👋 Quisiera reservar la Luxury House.
-            
-📅 *Fechas:*
-Llegada: ${checkin}
-Salida: ${checkout}
+            // 5. Mobile Menu Logic
+            const mobileMenu = document.getElementById('mobile-menu');
+            menuBtn.addEventListener('click', () => {
+                mobileMenu.classList.toggle('hidden');
+                mobileMenu.classList.toggle('flex');
+            });
+            document.querySelectorAll('.mobile-link').forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    mobileMenu.classList.remove('flex');
+                });
+            });
 
-👥 *Huéspedes:* ${pax}
+            // 6. Booking System Logic (Init)
+            initBookingSystem();
+        });
+
+        // Booking Logic Encapsulation
+        function initBookingSystem() {
+            let state = { checkin: '', checkout: '', pax: '', terms: false };
+            
+            // Generate Pax Options
+            const paxDropdown = document.getElementById('pax-dropdown');
+            const fragment = document.createDocumentFragment(); // Performance boost
+            for (let i = 1; i <= 20; i++) {
+                const div = document.createElement('div');
+                div.className = 'px-4 py-3 text-sm text-stone-600 hover:bg-stone-100 hover:text-stone-900 cursor-pointer transition-colors font-body';
+                div.innerText = `${i} ${i === 1 ? 'huésped' : 'huéspedes'}`;
+                div.onclick = () => selectPax(`${i} ${i === 1 ? 'huésped' : 'huéspedes'}`);
+                fragment.appendChild(div);
+            }
+            paxDropdown.appendChild(fragment);
+
+            const checkinInput = document.getElementById('checkin-input');
+            const checkoutInput = document.getElementById('checkout-input');
+            
+            // Set Min Date
+            const today = new Date().toISOString().split('T')[0];
+            checkinInput.min = today;
+            checkinInput.setAttribute('min', today);
+
+            // Checkin Logic
+            checkinInput.addEventListener('change', (e) => {
+                state.checkin = e.target.value;
+                const dateParts = state.checkin.split('-');
+                const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                
+                updateDisplay('checkin', dateObj);
+                
+                // Setup Checkout
+                const nextDay = new Date(dateObj);
+                nextDay.setDate(nextDay.getDate() + 1);
+                const nextDayStr = nextDay.toISOString().split('T')[0];
+                
+                checkoutInput.min = nextDayStr;
+                checkoutInput.setAttribute('min', nextDayStr);
+                checkoutInput.disabled = false;
+                checkoutInput.classList.remove('cursor-not-allowed');
+                checkoutInput.classList.add('cursor-pointer');
+                
+                if (state.checkout && state.checkout <= state.checkin) {
+                    state.checkout = '';
+                    resetDisplay('checkout');
+                }
+                checkContinueButton();
+            });
+
+            // Checkout Logic
+            checkoutInput.addEventListener('change', (e) => {
+                state.checkout = e.target.value;
+                const dateParts = state.checkout.split('-');
+                const dateObj = new Date(dateParts[0], dateParts[1] - 1, dateParts[2]);
+                updateDisplay('checkout', dateObj);
+                checkContinueButton();
+            });
+
+            // Pax Dropdown Logic
+            window.togglePaxDropdown = () => {
+                const dd = document.getElementById('pax-dropdown');
+                const icon = document.getElementById('pax-icon');
+                dd.classList.toggle('hidden');
+                icon.classList.toggle('rotate-180');
+            };
+
+            window.selectPax = (val) => {
+                state.pax = val;
+                const display = document.getElementById('pax-display');
+                const container = document.getElementById('pax-display-container');
+                const icon = document.getElementById('pax-icon');
+                
+                display.innerText = val;
+                display.classList.add('text-stone-800', 'font-bold');
+                container.classList.add('border-amber-500');
+                icon.classList.replace('text-stone-400', 'text-amber-500');
+                
+                window.togglePaxDropdown();
+                checkContinueButton();
+            };
+
+            // Close Dropdown Outside Click
+            document.addEventListener('click', (e) => {
+                const container = document.getElementById('pax-container');
+                if (container && !container.contains(e.target)) {
+                    document.getElementById('pax-dropdown').classList.add('hidden');
+                    document.getElementById('pax-icon').classList.remove('rotate-180');
+                }
+            });
+
+            // Helper Functions
+            function updateDisplay(type, dateObj) {
+                const options = { month: 'long', day: 'numeric' };
+                const displayDate = dateObj.toLocaleDateString('es-ES', options);
+                const displayEl = document.getElementById(`${type}-display`);
+                const containerEl = document.getElementById(`${type}-display-container`);
+                const iconEl = document.getElementById(`${type}-icon`);
+
+                displayEl.innerText = displayDate;
+                displayEl.classList.add('text-stone-800', 'font-bold');
+                displayEl.classList.remove('text-stone-500');
+                containerEl.classList.add('border-amber-500');
+                iconEl.classList.replace(type === 'checkin' ? 'text-stone-400' : 'text-stone-300', 'text-amber-500');
+            }
+
+            function resetDisplay(type) {
+                document.getElementById(`${type}-display`).innerText = "Seleccionar";
+                document.getElementById(`${type}-display`).classList.remove('text-stone-800', 'font-bold');
+                document.getElementById(`${type}-display-container`).classList.remove('border-amber-500');
+                document.getElementById(`${type}-icon`).classList.replace('text-amber-500', 'text-stone-300');
+            }
+
+            function checkContinueButton() {
+                const btn = document.getElementById('continue-btn-container');
+                if (state.checkin && state.checkout && state.pax) {
+                    btn.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+                    btn.classList.add('opacity-100', 'translate-y-0');
+                }
+            }
+
+            window.goToForm = () => {
+                const section = document.getElementById('form-section');
+                section.classList.remove('hidden');
+                updateSummary();
+                setTimeout(() => section.scrollIntoView({ behavior: 'smooth' }), 100);
+            };
+
+            window.updateSummary = () => {
+                const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                const inParts = state.checkin.split('-');
+                const outParts = state.checkout.split('-');
+                const dateIn = new Date(inParts[0], inParts[1] - 1, inParts[2]);
+                const dateOut = new Date(outParts[0], outParts[1] - 1, outParts[2]);
+                
+                document.getElementById('summary-checkin').innerText = dateIn.toLocaleDateString('es-ES', options);
+                document.getElementById('summary-checkout').innerText = dateOut.toLocaleDateString('es-ES', options);
+                
+                const diffTime = Math.abs(dateOut - dateIn);
+                const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24)); 
+                document.getElementById('summary-nights').innerText = `${diffDays} ${diffDays === 1 ? 'Noche' : 'Noches'}`;
+            };
+
+            window.editSelection = () => document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
+
+            window.toggleTerms = () => {
+                state.terms = !state.terms;
+                const box = document.getElementById('terms-check-box');
+                const icon = document.getElementById('terms-check-icon');
+                const btn = document.getElementById('submit-btn');
+
+                if (state.terms) {
+                    box.classList.replace('bg-transparent', 'bg-stone-900');
+                    box.classList.replace('border-stone-400', 'border-stone-900');
+                    icon.classList.remove('hidden');
+                    btn.disabled = false;
+                    btn.classList.remove('opacity-50', 'cursor-not-allowed');
+                    btn.classList.add('hover:bg-amber-500', 'shadow-xl');
+                } else {
+                    box.classList.replace('bg-stone-900', 'bg-transparent');
+                    box.classList.replace('border-stone-900', 'border-stone-400');
+                    icon.classList.add('hidden');
+                    btn.disabled = true;
+                    btn.classList.add('opacity-50', 'cursor-not-allowed');
+                    btn.classList.remove('hover:bg-amber-500', 'shadow-xl');
+                }
+            };
+
+            // Global access for the submit function (since it's called inline)
+            window.submitBooking = async (e) => {
+                e.preventDefault();
+                const btn = document.getElementById('submit-btn');
+                const originalBtnText = btn.innerHTML;
+                btn.innerHTML = 'Enviando...';
+                btn.disabled = true;
+
+                // Capture data
+                const formData = {
+                    firstName: document.getElementById('firstName').value,
+                    lastName: document.getElementById('lastName').value,
+                    email: document.getElementById('email').value,
+                    phone: document.getElementById('phone').value,
+                    notes: document.getElementById('notes-input').value
+                };
+
+                const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec'; 
+
+                // Google Sheets Logic
+                try {
+                    if (APPS_SCRIPT_URL.includes('AKfycbzx')) { // Simple check to run only if configured
+                        await fetch(APPS_SCRIPT_URL, {
+                            method: 'POST',
+                            mode: 'no-cors',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify({
+                                nombre: formData.firstName,
+                                apellido: formData.lastName,
+                                email: formData.email,
+                                telefono: formData.phone,
+                                llegada: state.checkin,
+                                salida: state.checkout,
+                                huespedes: state.pax,
+                                notas: formData.notes
+                            })
+                        });
+                    }
+                } catch (error) { console.error('Silent Error:', error); }
+
+                // WhatsApp Redirect
+                const message = `¡Hola! 👋 Quisiera reservar la Luxury House.
+                
+📅 *Fechas:* ${state.checkin} al ${state.checkout}
+👥 *Huéspedes:* ${state.pax}
 
 👤 *Mis Datos:*
-Nombre: ${firstName} ${lastName}
-Email: ${email}
-Celular: ${phone}
+Nombre: ${formData.firstName} ${formData.lastName}
+Email: ${formData.email}
+Celular: ${formData.phone}
 
-📝 *Notas adicionales:*
-${notes ? notes : 'Ninguna'}
+📝 *Notas:* ${formData.notes || 'Ninguna'}
 
-Quedo atento a la confirmación de disponibilidad y precio. ¡Gracias!`;
+Quedo atento a disponibilidad. ¡Gracias!`;
 
-            const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/573246874533?text=${encodedMessage}`, '_blank');
-            
-            btn.innerHTML = originalBtnText;
-            btn.disabled = false;
+                window.open(`https://wa.me/573246874533?text=${encodeURIComponent(message)}`, '_blank');
+                
+                btn.innerHTML = originalBtnText;
+                btn.disabled = false;
+            };
         }
     </script>
 </body>
