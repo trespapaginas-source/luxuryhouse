@@ -23,10 +23,9 @@ collections:
             widget: "object"
             fields:
               - {label: "Etiqueta", name: "etiqueta", widget: "string"}
-              - {label: "Título Principal (Soporta HTML)", name: "titulo", widget: "string"}
+              - {label: "Título (Primera Parte - Blanca)", name: "titulo_parte1", widget: "string"}
+              - {label: "Título (Segunda Parte - Dorada/Cursiva)", name: "titulo_parte2", widget: "string"}
               - {label: "Descripción", name: "descripcion", widget: "text"}
               - {label: "Imagen de Fondo", name: "imagen_fondo", widget: "image"}
               - {label: "Texto Botón Principal", name: "boton_primario_texto", widget: "string"}
-              - {label: "Enlace Botón Principal", name: "boton_primario_link", widget: "string"}
               - {label: "Texto Botón Secundario", name: "boton_secundario_texto", widget: "string"}
-              - {label: "Enlace Botón Secundario", name: "boton_secundario_link", widget: "string"}
