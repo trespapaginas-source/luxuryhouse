@@ -1,12 +1,11 @@
 {
   "hero": {
     "etiqueta": "Villas de Palmarito",
-    "titulo": "Tu Refugio <br/> <span class=\"text-amber-400 italic font-light\">Exclusivo</span>",
+    "titulo_parte1": "Tu Refugio",
+    "titulo_parte2": "Exclusivo",
     "descripcion": "Donde el lujo moderno se encuentra con la serenidad de la naturaleza. El escenario perfecto para crear recuerdos inolvidables con hasta 16 invitados.",
     "imagen_fondo": "/img/entrada.jpg",
     "boton_primario_texto": "Ver La Cabaña",
-    "boton_primario_link": "#tour-virtual",
-    "boton_secundario_texto": "Ver Disponibilidad",
-    "boton_secundario_link": "#reservas"
+    "boton_secundario_texto": "Ver Disponibilidad"
   }
 }
