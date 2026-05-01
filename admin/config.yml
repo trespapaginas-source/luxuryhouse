@@ -1,0 +1,31 @@
+backend:
+  name: git-gateway
+  repo: trespapaginas-source/luxuryhouse
+  branch: main
+  auth_type: pkce
+  base_url: https://auth.decapbridge.com
+  auth_endpoint: /sites/4e06c405-5a7e-4b42-b5ef-75422ec79166/pkce
+  auth_token_endpoint: /sites/4e06c405-5a7e-4b42-b5ef-75422ec79166/token
+  gateway_url: https://gateway.decapbridge.com
+
+site_url: https://luxuryhouse.pages.dev
+logo_url: https://decapbridge.com/decapcms-with-bridge.svg
+
+media_folder: "assets/img"
+public_folder: "/assets/img"
+
+collections:
+  - name: "landing"
+    label: "Contenido de la Landing"
+    files:
+      - name: "inicio"
+        label: "Página Principal"
+        file: "content/data.json"
+        fields:
+          - name: "hero"
+            label: "Sección Hero"
+            widget: "object"
+            fields:
+              - {label: "Etiqueta", name: "etiqueta", widget: "string"}
+              - {label: "Título Principal (Soporta HTML)", name: "titulo", widget: "string"}
+              - {label: "Descripción", name: "descripcion", widget: "text"}
