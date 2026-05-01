@@ -4,16 +4,16 @@ document.addEventListener('DOMContentLoaded', async () => {
         const data = await response.json();
         
         if(document.getElementById('hero-etiqueta')) document.getElementById('hero-etiqueta').innerHTML = data.hero.etiqueta;
-        if(document.getElementById('hero-titulo')) document.getElementById('hero-titulo').innerHTML = data.hero.titulo;
+        if(document.getElementById('hero-titulo')) {
+            document.getElementById('hero-titulo').innerHTML = `${data.hero.titulo_parte1} <br/> <span class="text-amber-400 italic font-light">${data.hero.titulo_parte2}</span>`;
+        }
         if(document.getElementById('hero-descripcion')) document.getElementById('hero-descripcion').innerHTML = data.hero.descripcion;
         if(document.getElementById('hero-bg')) document.getElementById('hero-bg').src = data.hero.imagen_fondo;
         if(document.getElementById('hero-btn-1')) {
             document.getElementById('hero-btn-1').innerHTML = `<i data-lucide="eye" width="18"></i> ${data.hero.boton_primario_texto}`;
-            document.getElementById('hero-btn-1').href = data.hero.boton_primario_link;
         }
         if(document.getElementById('hero-btn-2')) {
             document.getElementById('hero-btn-2').innerText = data.hero.boton_secundario_texto;
-            document.getElementById('hero-btn-2').href = data.hero.boton_secundario_link;
         }
     } catch (error) {
         console.error('Error cargando el contenido del CMS:', error);
