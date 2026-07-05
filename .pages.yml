@@ -1,9 +1,6 @@
-# ============================================================
-# Pages CMS — Schema Configuration for Luxury House
-# Docs: https://pagescms.org/docs/configuration
-# ============================================================
-
-media: img
+media:
+  input: img
+  output: img
 
 content:
   - name: landing
@@ -36,6 +33,8 @@ content:
           - name: og_imagen
             label: Imagen para Redes Sociales
             type: image
+            options:
+              path: img
           - name: url_canonica
             label: URL Canónica
             type: string
@@ -60,20 +59,12 @@ content:
                 label: Texto Visible
                 type: string
                 required: true
-              - name: ancla
-                label: Ancla (#sección)
-                type: string
-                required: true
           - name: boton_reservar
             label: Botón Reservar
             type: object
             fields:
               - name: texto
                 label: Texto del Botón
-                type: string
-                required: true
-              - name: ancla
-                label: Ancla Destino
                 type: string
                 required: true
 
@@ -102,6 +93,8 @@ content:
           - name: imagen_fondo
             label: Imagen de Fondo
             type: image
+            options:
+              path: img
             required: true
           - name: boton_primario
             label: Botón Principal
@@ -111,20 +104,12 @@ content:
                 label: Texto del Botón
                 type: string
                 required: true
-              - name: ancla
-                label: Ancla Destino
-                type: string
-                required: true
           - name: boton_secundario
             label: Botón Secundario
             type: object
             fields:
               - name: texto
                 label: Texto del Botón
-                type: string
-                required: true
-              - name: ancla
-                label: Ancla Destino
                 type: string
                 required: true
 
@@ -140,10 +125,6 @@ content:
             type: object
             list: true
             fields:
-              - name: icono
-                label: Nombre del Icono (Lucide)
-                type: string
-                required: true
               - name: valor
                 label: Valor (ej. 5.0, 100%, +500)
                 type: string
@@ -225,6 +206,8 @@ content:
               - name: src
                 label: Imagen
                 type: image
+                options:
+                  path: img
                 required: true
               - name: alt
                 label: Texto Alternativo (SEO)
@@ -262,10 +245,6 @@ content:
             type: object
             list: true
             fields:
-              - name: icono
-                label: Nombre del Icono (Lucide)
-                type: string
-                required: true
               - name: titulo
                 label: Nombre de la Comodidad
                 type: string
@@ -363,10 +342,6 @@ content:
                 type: object
                 list: true
                 fields:
-                  - name: icono
-                    label: Nombre del Icono (Lucide)
-                    type: string
-                    required: true
                   - name: titulo
                     label: Beneficio
                     type: string
@@ -429,10 +404,6 @@ content:
             fields:
               - name: texto
                 label: Texto del Enlace
-                type: string
-                required: true
-              - name: ancla
-                label: Ancla (#sección)
                 type: string
                 required: true
           - name: copyright
