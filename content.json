@@ -7,35 +7,52 @@
     "og_imagen": "img/entrada.jpg",
     "url_canonica": "https://luxuryhouse-pages.dev"
   },
-
   "navegacion": {
     "logo": "LUXURY HOUSE",
     "enlaces": [
-      { "texto": "Tour Virtual", "ancla": "#tour-virtual" },
-      { "texto": "Experiencia", "ancla": "#experiencia" },
-      { "texto": "Comodidades", "ancla": "#comodidades" }
+      {
+        "texto": "Tour Virtual"
+      },
+      {
+        "texto": "Experiencia"
+      },
+      {
+        "texto": "Comodidades"
+      }
     ],
-    "boton_reservar": { "texto": "Reservar", "ancla": "#reservas" }
+    "boton_reservar": {
+      "texto": "Reservar"
+    }
   },
-
   "hero": {
     "etiqueta": "Villas de Palmarito",
     "titulo_parte1": "Tu Refugio",
     "titulo_parte2": "Exclusivo",
     "descripcion": "Donde el lujo moderno se encuentra con la serenidad de la naturaleza. El escenario perfecto para crear recuerdos inolvidables con hasta 16 invitados.",
     "imagen_fondo": "img/entrada.jpg",
-    "boton_primario": { "texto": "Ver La Cabaña", "ancla": "#tour-virtual" },
-    "boton_secundario": { "texto": "Ver Disponibilidad", "ancla": "#reservas" }
+    "boton_primario": {
+      "texto": "Ver La Cabaña"
+    },
+    "boton_secundario": {
+      "texto": "Ver Disponibilidad"
+    }
   },
-
   "barra_confianza": {
     "items": [
-      { "icono": "star", "valor": "5.0", "etiqueta": "Airbnb Star" },
-      { "icono": "shield-check", "valor": "100%", "etiqueta": "Verificado" },
-      { "icono": "users", "valor": "+500", "etiqueta": "Huéspedes" }
+      {
+        "valor": "5.0",
+        "etiqueta": "Airbnb Star"
+      },
+      {
+        "valor": "100%",
+        "etiqueta": "Verificado"
+      },
+      {
+        "valor": "+500",
+        "etiqueta": "Huéspedes"
+      }
     ]
   },
-
   "tour_virtual": {
     "subtitulo": "Tecnología Inmersiva",
     "titulo_parte1": "Recorre la Cabaña",
@@ -48,7 +65,6 @@
       "texto_cta_overlay": "Click to Tour"
     }
   },
-
   "experiencia": {
     "subtitulo": "La Experiencia",
     "titulo_parte1": "Más que una cabaña,",
@@ -56,30 +72,58 @@
     "parrafo_1": "Ubicada en el exclusivo sector de Villas de Palmarito, Luxury House ha sido diseñada pensando en la plenitud. Aquí, los días comienzan con la brisa suave y terminan bajo un cielo estrellado, reunidos alrededor de espacios creados para compartir.",
     "parrafo_2": "Ya sea que busques una celebración familiar íntima, un retiro con amigos o simplemente escapar de la rutina, nuestra arquitectura abierta y amenidades de primera clase garantizan confort para 16 personas sin sacrificar la privacidad.",
     "imagenes": [
-      { "src": "img/experiencia-social.jpg", "alt": "Celebración en la piscina de Luxury House" },
-      { "src": "img/experiencia-romantica.jpg", "alt": "Decoración romántica en piscina" }
+      {
+        "src": "img/ChatGPT Image 21 jun 2026, 08_56_34 p.m..png",
+        "alt": "Celebración en la piscina de Luxury House"
+      },
+      {
+        "src": "img/experiencia-romantica.jpg",
+        "alt": "Decoración romántica en piscina"
+      }
     ],
     "instagram": {
       "texto": "Síguenos en Instagram",
       "url": "https://www.instagram.com/luxuryhousebq/"
     }
   },
-
   "comodidades": {
     "titulo": "Comodidades de Primera Clase",
     "descripcion": "Cada detalle ha sido cuidado para asegurar que tu estancia sea placentera y libre de preocupaciones.",
     "items": [
-      { "icono": "users", "titulo": "Capacidad para 16", "descripcion": "Espacios amplios y cómodos para grupos grandes y familias completas." },
-      { "icono": "bed-double", "titulo": "4 Habitaciones de Lujo", "descripcion": "Diseñadas para el descanso total, con privacidad y confort superior." },
-      { "icono": "waves", "titulo": "Piscina Fogata", "descripcion": "El corazón de la casa. Perfecta para refrescarse bajo el sol." },
-      { "icono": "utensils", "titulo": "Zona BBQ y Kiosko", "descripcion": "Equipado totalmente para tus asados y reuniones al aire libre." },
-      { "icono": "wifi", "titulo": "Conectividad Total", "descripcion": "Wi-Fi de alta velocidad para compartir tus momentos o trabajar remoto." },
-      { "icono": "music", "titulo": "Ambiente Social", "descripcion": "Sonido y espacios diseñados para la diversión y el entretenimiento." },
-      { "icono": "car", "titulo": "Parqueadero (5 Carros)", "descripcion": "Amplio espacio privado y seguro para la tranquilidad de todos." },
-      { "icono": "coffee", "titulo": "Cocina Equipada", "descripcion": "Todo lo necesario para preparar desde desayunos hasta cenas especiales." }
+      {
+        "titulo": "Capacidad para 16",
+        "descripcion": "Espacios amplios y cómodos para grupos grandes y familias completas."
+      },
+      {
+        "titulo": "4 Habitaciones de Lujo",
+        "descripcion": "Diseñadas para el descanso total, con privacidad y confort superior."
+      },
+      {
+        "titulo": "Piscina Fogata",
+        "descripcion": "El corazón de la casa. Perfecta para refrescarse bajo el sol."
+      },
+      {
+        "titulo": "Zona BBQ y Kiosko",
+        "descripcion": "Equipado totalmente para tus asados y reuniones al aire libre."
+      },
+      {
+        "titulo": "Conectividad Total",
+        "descripcion": "Wi-Fi de alta velocidad para compartir tus momentos o trabajar remoto."
+      },
+      {
+        "titulo": "Ambiente Social",
+        "descripcion": "Sonido y espacios diseñados para la diversión y el entretenimiento."
+      },
+      {
+        "titulo": "Parqueadero (5 Carros)",
+        "descripcion": "Amplio espacio privado y seguro para la tranquilidad de todos."
+      },
+      {
+        "titulo": "Cocina Equipada",
+        "descripcion": "Todo lo necesario para preparar desde desayunos hasta cenas especiales."
+      }
     ]
   },
-
   "testimonios": {
     "titulo": "Experiencias Inolvidables",
     "subtitulo": "Nuestros huéspedes lo confirman.",
@@ -107,7 +151,6 @@
       }
     ]
   },
-
   "faq": {
     "titulo": "Resuelve tus dudas antes de reservar",
     "items": [
@@ -133,17 +176,28 @@
       }
     ]
   },
-
   "reservas": {
     "titulo": "Asegura tu fecha hoy",
     "alerta_demanda": "⚠️ Alta demanda para los próximos fines de semana",
     "beneficios": {
       "titulo": "¿Por qué reservar aquí?",
       "items": [
-        { "icono": "gem", "titulo": "Sin intermediarios", "descripcion": "Trato directo y transparente." },
-        { "icono": "badge-check", "titulo": "Mejor precio garantizado", "descripcion": "Sin comisiones de apps." },
-        { "icono": "zap", "titulo": "Confirmación Inmediata", "descripcion": "Gestión ágil por WhatsApp." },
-        { "icono": "headphones", "titulo": "Asistencia VIP", "descripcion": "Soporte 24/7 para tu llegada." }
+        {
+          "titulo": "Sin intermediarios",
+          "descripcion": "Trato directo y transparente."
+        },
+        {
+          "titulo": "Mejor precio garantizado",
+          "descripcion": "Sin comisiones de apps."
+        },
+        {
+          "titulo": "Confirmación Inmediata",
+          "descripcion": "Gestión ágil por WhatsApp."
+        },
+        {
+          "titulo": "Asistencia VIP",
+          "descripcion": "Soporte 24/7 para tu llegada."
+        }
       ]
     },
     "whatsapp_asesor": {
@@ -158,14 +212,19 @@
     "google_apps_script_url": "https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec",
     "capacidad_maxima_huespedes": 20
   },
-
   "footer": {
     "nombre": "LUXURY HOUSE",
     "ubicacion": "Villas de Palmarito, Atlántico.",
     "enlaces": [
-      { "texto": "Experiencia", "ancla": "#experiencia" },
-      { "texto": "Comodidades", "ancla": "#comodidades" },
-      { "texto": "Tour 360°", "ancla": "#tour-virtual" }
+      {
+        "texto": "Experiencia"
+      },
+      {
+        "texto": "Comodidades"
+      },
+      {
+        "texto": "Tour 360°"
+      }
     ],
     "copyright": "Luxury House Cabaña."
   }
