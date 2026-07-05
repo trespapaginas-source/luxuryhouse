@@ -1,0 +1,440 @@
+# ============================================================
+# Pages CMS — Schema Configuration for Luxury House
+# Docs: https://pagescms.org/docs/configuration
+# ============================================================
+
+media: img
+
+content:
+  - name: landing
+    label: Luxury House — Landing Page
+    type: file
+    path: content.json
+    fields:
+
+      # ============================
+      # SEO
+      # ============================
+      - name: seo
+        label: "🔍 SEO y Meta Tags"
+        type: object
+        fields:
+          - name: titulo_pagina
+            label: Título de la Pestaña del Navegador
+            type: string
+            required: true
+          - name: meta_descripcion
+            label: Meta Descripción (Google)
+            type: text
+            required: true
+          - name: og_titulo
+            label: Título para Redes Sociales (Open Graph)
+            type: string
+          - name: og_descripcion
+            label: Descripción para Redes Sociales
+            type: text
+          - name: og_imagen
+            label: Imagen para Redes Sociales
+            type: image
+          - name: url_canonica
+            label: URL Canónica
+            type: string
+
+      # ============================
+      # NAVEGACIÓN
+      # ============================
+      - name: navegacion
+        label: "🧭 Navegación"
+        type: object
+        fields:
+          - name: logo
+            label: Texto del Logo
+            type: string
+            required: true
+          - name: enlaces
+            label: Enlaces del Menú
+            type: object
+            list: true
+            fields:
+              - name: texto
+                label: Texto Visible
+                type: string
+                required: true
+              - name: ancla
+                label: Ancla (#sección)
+                type: string
+                required: true
+          - name: boton_reservar
+            label: Botón Reservar
+            type: object
+            fields:
+              - name: texto
+                label: Texto del Botón
+                type: string
+                required: true
+              - name: ancla
+                label: Ancla Destino
+                type: string
+                required: true
+
+      # ============================
+      # HERO
+      # ============================
+      - name: hero
+        label: "🏠 Sección Hero (Portada)"
+        type: object
+        fields:
+          - name: etiqueta
+            label: Etiqueta Superior
+            type: string
+          - name: titulo_parte1
+            label: Título (Parte Blanca)
+            type: string
+            required: true
+          - name: titulo_parte2
+            label: Título (Parte Dorada/Cursiva)
+            type: string
+            required: true
+          - name: descripcion
+            label: Descripción
+            type: text
+            required: true
+          - name: imagen_fondo
+            label: Imagen de Fondo
+            type: image
+            required: true
+          - name: boton_primario
+            label: Botón Principal
+            type: object
+            fields:
+              - name: texto
+                label: Texto del Botón
+                type: string
+                required: true
+              - name: ancla
+                label: Ancla Destino
+                type: string
+                required: true
+          - name: boton_secundario
+            label: Botón Secundario
+            type: object
+            fields:
+              - name: texto
+                label: Texto del Botón
+                type: string
+                required: true
+              - name: ancla
+                label: Ancla Destino
+                type: string
+                required: true
+
+      # ============================
+      # BARRA DE CONFIANZA
+      # ============================
+      - name: barra_confianza
+        label: "⭐ Barra de Confianza"
+        type: object
+        fields:
+          - name: items
+            label: Indicadores
+            type: object
+            list: true
+            fields:
+              - name: icono
+                label: Nombre del Icono (Lucide)
+                type: string
+                required: true
+              - name: valor
+                label: Valor (ej. 5.0, 100%, +500)
+                type: string
+                required: true
+              - name: etiqueta
+                label: Etiqueta Inferior
+                type: string
+                required: true
+
+      # ============================
+      # TOUR VIRTUAL 360°
+      # ============================
+      - name: tour_virtual
+        label: "🔄 Tour Virtual 360°"
+        type: object
+        fields:
+          - name: subtitulo
+            label: Subtítulo
+            type: string
+          - name: titulo_parte1
+            label: Título (Línea 1)
+            type: string
+            required: true
+          - name: titulo_parte2
+            label: Título (Línea 2)
+            type: string
+            required: true
+          - name: descripcion
+            label: Descripción
+            type: text
+          - name: etiqueta_interactiva
+            label: Etiqueta Interactiva
+            type: string
+          - name: tour_360
+            label: Configuración del Tour 360°
+            type: object
+            fields:
+              - name: url_iframe
+                label: URL del Tour Panoee (iframe)
+                type: string
+                required: true
+              - name: texto_overlay
+                label: Texto del Badge (ej. 360°)
+                type: string
+              - name: texto_cta_overlay
+                label: Texto CTA del Overlay
+                type: string
+
+      # ============================
+      # EXPERIENCIA
+      # ============================
+      - name: experiencia
+        label: "✨ Sección Experiencia"
+        type: object
+        fields:
+          - name: subtitulo
+            label: Subtítulo
+            type: string
+          - name: titulo_parte1
+            label: Título (Línea 1)
+            type: string
+            required: true
+          - name: titulo_parte2
+            label: Título (Línea 2)
+            type: string
+            required: true
+          - name: parrafo_1
+            label: Primer Párrafo
+            type: text
+            required: true
+          - name: parrafo_2
+            label: Segundo Párrafo
+            type: text
+          - name: imagenes
+            label: Imágenes de la Sección
+            type: object
+            list: true
+            fields:
+              - name: src
+                label: Imagen
+                type: image
+                required: true
+              - name: alt
+                label: Texto Alternativo (SEO)
+                type: string
+                required: true
+          - name: instagram
+            label: Enlace de Instagram
+            type: object
+            fields:
+              - name: texto
+                label: Texto Visible del Enlace
+                type: string
+                required: true
+              - name: url
+                label: URL de Instagram
+                type: string
+                required: true
+
+      # ============================
+      # COMODIDADES
+      # ============================
+      - name: comodidades
+        label: "🛋️ Comodidades"
+        type: object
+        fields:
+          - name: titulo
+            label: Título de la Sección
+            type: string
+            required: true
+          - name: descripcion
+            label: Descripción
+            type: text
+          - name: items
+            label: Lista de Comodidades
+            type: object
+            list: true
+            fields:
+              - name: icono
+                label: Nombre del Icono (Lucide)
+                type: string
+                required: true
+              - name: titulo
+                label: Nombre de la Comodidad
+                type: string
+                required: true
+              - name: descripcion
+                label: Descripción Breve
+                type: text
+
+      # ============================
+      # TESTIMONIOS
+      # ============================
+      - name: testimonios
+        label: "💬 Testimonios"
+        type: object
+        fields:
+          - name: titulo
+            label: Título de la Sección
+            type: string
+            required: true
+          - name: subtitulo
+            label: Subtítulo
+            type: string
+          - name: items
+            label: Lista de Testimonios
+            type: object
+            list: true
+            fields:
+              - name: estrellas
+                label: Calificación (1-5)
+                type: number
+                required: true
+              - name: texto
+                label: Texto del Testimonio
+                type: text
+                required: true
+              - name: nombre
+                label: Nombre del Huésped
+                type: string
+                required: true
+              - name: rol
+                label: Tipo de Visita
+                type: string
+              - name: avatar
+                label: Foto del Huésped (URL)
+                type: string
+
+      # ============================
+      # FAQ
+      # ============================
+      - name: faq
+        label: "❓ Preguntas Frecuentes"
+        type: object
+        fields:
+          - name: titulo
+            label: Título de la Sección
+            type: string
+            required: true
+          - name: items
+            label: Preguntas y Respuestas
+            type: object
+            list: true
+            fields:
+              - name: pregunta
+                label: Pregunta
+                type: string
+                required: true
+              - name: respuesta
+                label: Respuesta
+                type: text
+                required: true
+
+      # ============================
+      # RESERVAS
+      # ============================
+      - name: reservas
+        label: "📅 Sistema de Reservas"
+        type: object
+        fields:
+          - name: titulo
+            label: Título de la Sección
+            type: string
+            required: true
+          - name: alerta_demanda
+            label: Texto de Alerta de Demanda
+            type: string
+          - name: beneficios
+            label: Beneficios de Reservar Directo
+            type: object
+            fields:
+              - name: titulo
+                label: Título del Bloque
+                type: string
+              - name: items
+                label: Lista de Beneficios
+                type: object
+                list: true
+                fields:
+                  - name: icono
+                    label: Nombre del Icono (Lucide)
+                    type: string
+                    required: true
+                  - name: titulo
+                    label: Beneficio
+                    type: string
+                    required: true
+                  - name: descripcion
+                    label: Detalle
+                    type: string
+          - name: whatsapp_asesor
+            label: WhatsApp — Asesor (Botón de Dudas)
+            type: object
+            fields:
+              - name: texto
+                label: Texto Visible del Botón
+                type: string
+                required: true
+              - name: subtexto
+                label: Texto Pequeño Superior
+                type: string
+              - name: url
+                label: URL de WhatsApp (wa.me/...)
+                type: string
+                required: true
+          - name: whatsapp_reserva
+            label: WhatsApp — Confirmación de Reserva
+            type: object
+            fields:
+              - name: url
+                label: URL de WhatsApp
+                type: string
+                required: true
+              - name: numero
+                label: Número sin Formato (ej. 573001234567)
+                type: string
+                required: true
+          - name: google_apps_script_url
+            label: URL del Google Apps Script (Google Sheets)
+            type: string
+          - name: capacidad_maxima_huespedes
+            label: Capacidad Máxima de Huéspedes
+            type: number
+
+      # ============================
+      # FOOTER
+      # ============================
+      - name: footer
+        label: "📄 Pie de Página"
+        type: object
+        fields:
+          - name: nombre
+            label: Nombre del Negocio
+            type: string
+            required: true
+          - name: ubicacion
+            label: Ubicación
+            type: string
+          - name: enlaces
+            label: Enlaces del Footer
+            type: object
+            list: true
+            fields:
+              - name: texto
+                label: Texto del Enlace
+                type: string
+                required: true
+              - name: ancla
+                label: Ancla (#sección)
+                type: string
+                required: true
+          - name: copyright
+            label: Texto de Copyright
+            type: string
