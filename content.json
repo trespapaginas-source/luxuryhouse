@@ -1,9 +1,9 @@
 {
   "seo": {
     "titulo_pagina": "Luxury House Cabaña | Villas de Palmarito",
-    "meta_descripcion": "Cabaña de lujo en Villas de Palmarito. 4 Habitaciones, capacidad para 16 personas, piscina privada y parqueadero. Reserva directa sin comisiones.",
+    "meta_descripcion": "Cabaña de lujo en Villas de Palmarito. 4 Habitaciones con aire acondicionado, capacidad para 25 personas, piscina privada y parqueadero. Reserva directa sin comisiones.",
     "og_titulo": "Luxury House Cabaña | Villas de Palmarito",
-    "og_descripcion": "Tu refugio exclusivo con piscina privada, BBQ y capacidad para 16 personas.",
+    "og_descripcion": "Tu refugio exclusivo con piscina privada, BBQ y capacidad para 25 personas.",
     "og_imagen": "img/entrada.jpg",
     "url_canonica": "https://luxuryhouse-pages.dev"
   },
@@ -28,7 +28,7 @@
     "etiqueta": "Villas de Palmarito",
     "titulo_parte1": "Tu Refugio",
     "titulo_parte2": "Exclusivo",
-    "descripcion": "Donde el lujo moderno se encuentra con la serenidad de la naturaleza. El escenario perfecto para crear recuerdos inolvidables con hasta 16 invitados.",
+    "descripcion": "Donde el lujo moderno se encuentra con la serenidad de la naturaleza. El escenario perfecto para crear recuerdos inolvidables con hasta 25 invitados.",
     "imagen_fondo": "img/entrada.jpg",
     "boton_primario": {
       "texto": "Ver La Cabaña"
@@ -70,7 +70,7 @@
     "titulo_parte1": "Más que una cabaña,",
     "titulo_parte2": "un destino en sí mismo.",
     "parrafo_1": "Ubicada en el exclusivo sector de Villas de Palmarito, Luxury House ha sido diseñada pensando en la plenitud. Aquí, los días comienzan con la brisa suave y terminan bajo un cielo estrellado, reunidos alrededor de espacios creados para compartir.",
-    "parrafo_2": "Ya sea que busques una celebración familiar íntima, un retiro con amigos o simplemente escapar de la rutina, nuestra arquitectura abierta y amenidades de primera clase garantizan confort para 16 personas sin sacrificar la privacidad.",
+    "parrafo_2": "Ya sea que busques una celebración familiar íntima, un retiro con amigos o simplemente escapar de la rutina, nuestra arquitectura abierta y amenidades de primera clase garantizan confort para 25 personas sin sacrificar la privacidad.",
     "imagenes": [
       {
         "src": "img/experiencia-social.jpg",
@@ -91,12 +91,12 @@
     "descripcion": "Cada detalle ha sido cuidado para asegurar que tu estancia sea placentera y libre de preocupaciones.",
     "items": [
       {
-        "titulo": "Capacidad para 16",
-        "descripcion": "Espacios amplios y cómodos para grupos grandes y familias completas."
+        "titulo": "Capacidad para 25",
+        "descripcion": "Espacios amplios y cómodos para grupos grandes y familias completas (hasta 50 en pasadía)."
       },
       {
         "titulo": "4 Habitaciones de Lujo",
-        "descripcion": "Diseñadas para el descanso total, con privacidad y confort superior."
+        "descripcion": "Diseñadas para el descanso total, con aire acondicionado y confort superior."
       },
       {
         "titulo": "Piscina Fogata",
@@ -172,7 +172,7 @@
       },
       {
         "pregunta": "5. ¿Qué incluye la cocina?",
-        "respuesta": "La cocina está equipada con nevera, estufa, licuadora, cafetera y menaje básico para 16 personas. Solo necesitas traer tus ingredientes."
+        "respuesta": "La cocina está equipada con nevera, estufa, licuadora, cafetera y menaje básico para 25 personas. Solo necesitas traer tus ingredientes."
       }
     ]
   },
@@ -203,14 +203,14 @@
     "whatsapp_asesor": {
       "texto": "Hablar con un Asesor",
       "subtexto": "¿Tienes dudas puntuales?",
-      "url": "https://wa.me/573246874533"
+      "url": "https://wa.me/573014853442"
     },
     "whatsapp_reserva": {
-      "url": "https://wa.me/573246874533",
-      "numero": "573246874533"
+      "url": "https://wa.me/573014853442",
+      "numero": "573014853442"
     },
     "google_apps_script_url": "https://script.google.com/macros/s/AKfycbzxZa_qOH1sg63ymKgn80RUQGjX3-UyXf3YYq1R6tF8KFcOovsa8mzyNszmHVtC0LrnQA/exec",
-    "capacidad_maxima_huespedes": 20
+    "capacidad_maxima_huespedes": 25
   },
   "footer": {
     "nombre": "LUXURY HOUSE",
